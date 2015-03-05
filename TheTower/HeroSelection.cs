@@ -65,6 +65,7 @@ namespace TheTower
         private void btHero1_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 1");
+            newHero.HeroClass = "Warrior";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -72,6 +73,7 @@ namespace TheTower
         private void btHero2_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 2");
+            newHero.HeroClass = "Vampire";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -79,6 +81,7 @@ namespace TheTower
         private void btHero3_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 3");
+            newHero.HeroClass = "Miss World";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -86,6 +89,7 @@ namespace TheTower
         private void btHero4_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 4");
+            newHero.HeroClass = "Wizzard";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -93,6 +97,7 @@ namespace TheTower
         private void btHero5_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 5");
+            newHero.HeroClass = "Elf";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -100,6 +105,7 @@ namespace TheTower
         private void btHero6_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 6");
+            newHero.HeroClass = "Shaolin Monk";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -107,6 +113,7 @@ namespace TheTower
         private void btHero7_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 7");
+            newHero.HeroClass = "Ninja";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -114,6 +121,7 @@ namespace TheTower
         private void btHero8_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 8");
+            newHero.HeroClass = "Warrior";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -125,31 +133,45 @@ namespace TheTower
 
         private void tbHero2_TextChanged(object sender, EventArgs e)
         {
-            ((HeroNode)heroQueue[1]).UserNamed = tbHero1.Text;
+            ((HeroNode)heroQueue[1]).UserNamed = tbHero2.Text;
         }
 
         private void tbHero3_TextChanged(object sender, EventArgs e)
         {
-            ((HeroNode)heroQueue[2]).UserNamed = tbHero1.Text;
+            ((HeroNode)heroQueue[2]).UserNamed = tbHero3.Text;
         }
 
         private void tbHero4_TextChanged(object sender, EventArgs e)
         {
-            ((HeroNode)heroQueue[3]).UserNamed = tbHero1.Text;
+            ((HeroNode)heroQueue[3]).UserNamed = tbHero4.Text;
         }
 
+        private Pawn makingHero(PawnFactory fact, String heroClass, String heroName)
+        {
+            if (heroClass.Equals("Warrior"))
+                return fact.MakeWarrior(heroName);
+            else if (heroClass.Equals("Vampire"))
+                return fact.MakeVampireHero(heroName);
+            else if (heroClass.Equals("Miss World"))
+                return fact.MakeMissWorld(heroName);
+            else if (heroClass.Equals("Wizzard"))
+                return fact.MakeWizzard(heroName);
+            else if (heroClass.Equals("Elf"))
+                return fact.MakeElf(heroName);
+            else if (heroClass.Equals("Shaolin Monk"))
+                return fact.MakeShaolinMonk(heroName);
+            else
+                return fact.MakeNinja(heroName);          
+
+        }
         private void btReady_Click(object sender, EventArgs e)
         {
             PawnFactory fact = new PawnFactory();
             Pawn[] party = new Pawn[4];
-            party[0] = fact.MakeWarrior("a");
-            party[0].setImage(Image.FromFile("bitmap/dice0.png"));
-            party[1] = fact.MakeWarrior("b");
-            party[1].setImage(Image.FromFile("bitmap/dice0.png"));
-            party[2] = fact.MakeWarrior("c");
-            party[2].setImage(Image.FromFile("bitmap/dice0.png"));
-            party[3] = fact.MakeWarrior("d");
-            party[3].setImage(Image.FromFile("bitmap/dice0.png"));
+            party[0] = makingHero(fact, ((HeroNode)heroQueue[0]).HeroClass, ((HeroNode)heroQueue[0]).UserNamed);
+            party[1] = makingHero(fact, ((HeroNode)heroQueue[1]).HeroClass, ((HeroNode)heroQueue[1]).UserNamed); ;
+            party[2] = makingHero(fact, ((HeroNode)heroQueue[2]).HeroClass, ((HeroNode)heroQueue[2]).UserNamed); ;
+            party[3] = makingHero(fact, ((HeroNode)heroQueue[3]).HeroClass, ((HeroNode)heroQueue[3]).UserNamed); ;
 
             gameScreen = new LevelForm(party);
             gameScreen.Visible = false;

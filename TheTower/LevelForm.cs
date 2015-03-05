@@ -9,7 +9,129 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+		/* Inside Constructor 
+			this.Turns = new TurnManager();
 
+            foreach (Pawn p in pParty)
+            {
+                this.Turns.AddPawn(p);
+            }
+            foreach (Pawn p in Enemies)
+            {
+                this.Turns.AddPawn(p);
+            }
+
+            this.CurrentPawn = this.Turns.NextTurn();
+            Lbl_Turn.Text = CurrentPawn.Name + "'s Turn!";
+
+            this.ResumeLayout();
+            this.Show();
+
+            this.UpdateTurns();
+        }
+        private void UpdateGUI()
+        {
+            Hero1_HP.Text = this.Party[0].Health + "/" + this.Party[0].MaxHealth;
+            Hero1_AP.Text = this.Party[0].AP + "/" + this.Party[0].MaxAP;
+            Hero2_HP.Text = this.Party[1].Health + "/" + this.Party[1].MaxHealth;
+            Hero2_AP.Text = this.Party[1].AP + "/" + this.Party[1].MaxAP;
+            Hero3_HP.Text = this.Party[2].Health + "/" + this.Party[2].MaxHealth;
+            Hero3_AP.Text = this.Party[2].AP + "/" + this.Party[2].MaxAP;
+            Hero4_HP.Text = this.Party[3].Health + "/" + this.Party[3].MaxHealth;
+            Hero4_AP.Text = this.Party[3].AP + "/" + this.Party[3].MaxAP;
+        }
+        private void UpdateTurns()
+        {
+            UpdateGUI();
+            if(!this.CurrentPawn.CanAct())
+            {
+                CurrentPawn.ResetAP();
+                Turns.AddPawn(CurrentPawn);
+                CurrentPawn = Turns.NextTurn();
+                Lbl_Turn.Text = CurrentPawn.Name + "'s Turn!";
+            }
+            while (this.CurrentPawn.GetTags().Contains("Creature"))
+            {
+                System.Threading.Thread.Sleep(1000);
+                NPC = new AIController(this.CurrentPawn);
+                getButton(getPanel(CurrentPawn.GetTile())).Text = "";
+                getButton(getPanel(CurrentPawn.GetTile())).Visible = false;
+                NPC.ExecuteTurn();
+                UpdateGUI();
+                CurrentPawn.ResetAP();
+                getButton(getPanel(CurrentPawn.GetTile())).Text = CurrentPawn.Name;
+                getButton(getPanel(CurrentPawn.GetTile())).Visible = true;
+                Turns.AddPawn(CurrentPawn);
+                CurrentPawn = Turns.NextTurn();
+                if (CheckGameState() != 0)
+                    return;
+                Lbl_Turn.Text = CurrentPawn.Name + "'s Turn!";
+
+            }
+        }
+        private int CheckGameState()
+        {
+            int players = 0;
+            int enemies = 0;
+            foreach (Pawn p in Party)
+                if (!p.Dead)
+                    players++;
+            foreach (Pawn p in Enemies)
+                if (!p.Dead)
+                    enemies++;
+            if (players == 0)
+                return -1;
+            if (enemies == 0)
+                return 1;
+            return 0;
+        }
+        private void SpecialClick(object sender, EventArgs e)
+        {
+            Panel CurSelection = ((Panel)((ContextMenu)((MenuItem)sender).Parent).SourceControl);
+            Tile CurTile = getTile(CurSelection);
+            if (CurrentPawn.GetSpecialRange().Contains(CurTile))
+            {
+                CurrentPawn.UseSpecial(CurTile);
+            }
+            else
+            {
+                Console.WriteLine("Cannot Attack Here!");
+            }
+            UpdateTurns();
+        }
+        private void AttackClick(object sender, EventArgs e)
+        {
+            Panel CurSelection = ((Panel)((ContextMenu)((MenuItem)sender).Parent).SourceControl);
+            Tile CurTile = getTile(CurSelection);
+            if (CurrentPawn.GetAttackRange().Contains(CurTile))
+            {
+                CurrentPawn.UseAttack(CurTile);
+            }
+            else
+            {
+                Console.WriteLine("Cannot Attack Here!");
+            }
+            UpdateTurns();
+        }
+        private void MoveClick(object sender, EventArgs e)
+        {
+            Panel CurSelection = ((Panel)((ContextMenu)((MenuItem)sender).Parent).SourceControl);
+            Tile CurTile = getTile(CurSelection);
+            if(CurrentPawn.GetMoveRange().Contains(CurTile))
+            {
+                getButton(getPanel(CurrentPawn.GetTile())).Text = "";
+                getButton(getPanel(CurrentPawn.GetTile())).Visible = false;
+                Console.WriteLine(CurrentPawn.Name + " moves to " + CurTile.x + ", " + CurTile.y);
+                CurrentPawn.MoveTo(CurTile);
+                getButton(CurSelection).Visible = true;
+                getButton(CurSelection).Text = CurrentPawn.Name;
+            }
+            else
+            {
+                Console.WriteLine("Cannot Move Here!");
+            }
+            UpdateTurns();
+        }*/
 
 namespace TheTower
 {
@@ -53,6 +175,7 @@ namespace TheTower
             this.Refresh();
             this.ResumeLayout();
             this.Show();
+			
         }
         private void SpecialClick(object sender, EventArgs e)
         {

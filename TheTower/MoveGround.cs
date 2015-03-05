@@ -8,7 +8,10 @@ namespace TheTower
 {
     public class MoveGround : MoveMode
     {
-        public MoveGround(Pawn owner):base(owner){}
+        public MoveGround(Pawn owner):base(owner)
+        {
+            this.Cost = 3;
+        }
         public override TileComposite GetMoveRange()
         {
             return this.Owner.GetTile().GetMoveRange(this.Owner.Speed);

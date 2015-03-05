@@ -30,6 +30,15 @@ namespace TheTower
             this.downRight = null;
             this.Actors = new List<Actor>();
         }
+        public bool HasType(string Type)
+        {
+            foreach (Actor a in Actors)
+            {
+                if (a.GetTags().Contains(Type))
+                    return true;
+            }
+            return false;
+        }
         public bool Contains(Tile that)
         {
             return this.Equals(that);

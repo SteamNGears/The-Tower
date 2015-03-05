@@ -19,6 +19,11 @@ namespace TheTower
             this.AddTag("Collidable");
             this.AddTag("Wall");
         }
-
+        public override Actor clone()
+        {
+            Actor ret = new Wall(this.Name, this.ID);
+            ret.setImage(this.Img);
+            return ret;
+        }
     }
 }

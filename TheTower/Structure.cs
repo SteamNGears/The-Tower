@@ -11,18 +11,11 @@ using System.Text;
 
 namespace TheTower
 {
-    public class Structure : Actor
+    public abstract class Structure : Actor
     {
         public Structure(string name, int id)
             : base(name, id)
         {
-        }
-
-        public override Actor clone()
-        {
-            Actor ret = new Structure(this.Name, this.ID);
-            ret.setImage(this.Img);
-            return ret;
         }
     }
 }

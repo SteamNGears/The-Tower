@@ -20,9 +20,10 @@ namespace TheTower
             this.Move = null;
             this.Defense = null;
             this.Attack = null;
+            this.MaxAP = this.AP;
         }
-        public Controller Owner { get; private set; }
         public int AP { get; private set; }
+        public int MaxAP { get; private set; }
         public int Health { get; private set; }
         public int MaxHealth { get; private set; }
 	    public int Speed{ get; private set; }
@@ -34,6 +35,32 @@ namespace TheTower
         private MoveMode Move;
         private SpecialMode Special;
 
+		public override Actor clone()
+		{
+			return this;
+		}
+        public void SetPower(int p)
+        {
+            this.Power = p;
+        }
+        public bool CanAttack()
+        {
+            return this.AP >= this.Attack.GetCost();
+        }
+        public bool CanAct()
+        {
+            return this.AP >= this.Move.GetCost() || this.AP >= this.Attack.GetCost() || this.AP >= this.Special.GetCost();
+        }
+        public void ResetAP()
+        {
+            this.AP = this.MaxAP;
+        }
+        public void RemoveAP(int ap)
+        {
+            this.AP -= ap;
+            if (this.AP < 0)
+                this.AP = 0;
+        }
         public void SetHealth(int hp)
         {
             this.Health = hp;
@@ -130,11 +157,5 @@ namespace TheTower
         {
             this.Special = special;
         }
-
-        public override Actor clone()
-        {
-            throw new NotImplementedException("Need to add a clone method to pawn");
-        }
-
     }
 }

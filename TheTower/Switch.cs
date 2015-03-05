@@ -19,5 +19,10 @@ namespace TheTower
         }
         public Trap Target { get; private set; }
 
+        public override Actor clone()
+        {
+            return this;
+        }
+
     }
 }

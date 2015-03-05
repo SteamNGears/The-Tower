@@ -47,9 +47,12 @@
     <Compile Include="ActorFactory.cs" />
     <Compile Include="Attack.cs" />
     <Compile Include="AttackBurn.cs" />
+    <Compile Include="AttackChopcs.cs" />
     <Compile Include="AttackFreeze.cs" />
     <Compile Include="AttackMode.cs" />
-    <Compile Include="Controller.cs" />
+    <Compile Include="AIController.cs" />
+    <Compile Include="AttackSmile.cs" />
+    <Compile Include="AttackWizzardStick.cs" />
     <Compile Include="DefenseMode.cs" />
     <Compile Include="Drawable.cs" />
     <Compile Include="Floor.cs" />
@@ -87,9 +90,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SpecialBow.cs" />
+    <Compile Include="SpecialCheerLeader.cs" />
     <Compile Include="SpecialExplode.cs" />
     <Compile Include="SpecialHeal.cs" />
     <Compile Include="SpecialMode.cs" />
+    <Compile Include="SpecialRockThrowing.cs" />
+    <Compile Include="SpecialSacrifice.cs" />
+    <Compile Include="SpecialSneakAttack.cs" />
+    <Compile Include="SpecialVampireBite.cs" />
     <Compile Include="StartGame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +120,7 @@
     <Compile Include="Structure.cs" />
     <Compile Include="Switch.cs" />
     <Compile Include="Trap.cs" />
+    <Compile Include="TurnManager.cs" />
     <Compile Include="Wall.cs" />
   </ItemGroup>
   <ItemGroup>

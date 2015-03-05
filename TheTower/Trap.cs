@@ -23,5 +23,9 @@ namespace TheTower
         {
             return this.Power;
         }
+        public override Actor clone()
+        {
+            return this;
+        }
     }
 }

@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace TheTower
 {
-    public class AttackBurn : AttackMode
+    class AttackWizzardStick : AttackMode
     {
-        public AttackBurn(Pawn owner) : base(owner)
+        public AttackWizzardStick(Pawn owner)
+            : base(owner)
         {
             typeList = new List<string>();
-            typeList.Add("Fire");
-            this.Cost = 4;
+            typeList.Add("WizzardStick");
+            this.Cost = 5;
         }
         public override int ModDamage()
         {
-            return (int)(this.Owner.GetPower() * 0.8);
+            return (int)(this.Owner.GetPower() / 2);
         }
         public override TileComposite GetAoeRange(Tile tile)
         {
@@ -24,7 +25,7 @@ namespace TheTower
         }
         public override TileComposite GetAttackRange()
         {
-            return this.Owner.GetTile().GetRange(6);
+            return this.Owner.GetTile().GetRange(2);
         }
     }
 }

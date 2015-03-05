@@ -10,7 +10,7 @@ namespace TheTower
     {
         protected Pawn Owner;
         protected List<string> typeList;
-
+        protected int Cost;
         public SpecialMode(Pawn owner)
         {
             this.Owner = owner;
@@ -18,5 +18,10 @@ namespace TheTower
         public abstract void Special(Tile target);
         public abstract TileComposite GetAoeRange(Tile tile);
         public abstract TileComposite GetSpecialRange();
+
+        public int GetCost()
+        {
+            return this.Cost;
+        }
     }
 }

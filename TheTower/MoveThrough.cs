@@ -8,7 +8,10 @@ namespace TheTower
 {
     public class MoveThrough : MoveMode
     {
-        public MoveThrough(Pawn owner) : base(owner){}
+        public MoveThrough(Pawn owner) : base(owner)
+        {
+            this.Cost = 3;
+        }
         public override TileComposite GetMoveRange()
         {
             return this.Owner.GetTile().GetRange(this.Owner.Speed);

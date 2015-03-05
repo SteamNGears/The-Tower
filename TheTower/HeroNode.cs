@@ -11,13 +11,24 @@ namespace TheTower
         private String heroName;
         private String userNamed;
         private String imagePath;
+        private String heroClass;
 
         public HeroNode(String heroName)
         {
             this.heroName = heroName;
             updateImagePath();
         }
-
+        public String HeroClass
+        {
+            get
+            {
+                return this.heroClass;
+            }
+            set
+            {
+                this.heroClass = value;
+            }
+        }
         public String UserNamed
         {
             get
@@ -51,5 +62,6 @@ namespace TheTower
             }
         }
 
+        
     }
 }

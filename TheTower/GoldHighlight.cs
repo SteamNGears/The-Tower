@@ -15,5 +15,10 @@ namespace TheTower
             this.setImage(Image.FromFile("bitmap/Highlight.png"));
         }
 
+        public override Actor clone()
+        {
+            return this;
+        }
+
     }
 }
