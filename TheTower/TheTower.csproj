@@ -43,107 +43,107 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actor.cs" />
-    <Compile Include="ActorFactory.cs" />
-    <Compile Include="Attack.cs" />
-    <Compile Include="AttackBurn.cs" />
-    <Compile Include="AttackChopcs.cs" />
-    <Compile Include="AttackFreeze.cs" />
-    <Compile Include="AttackMode.cs" />
-    <Compile Include="AIController.cs" />
-    <Compile Include="AttackSmile.cs" />
-    <Compile Include="AttackWizzardStick.cs" />
-    <Compile Include="DefenseMode.cs" />
-    <Compile Include="Drawable.cs" />
-    <Compile Include="Floor.cs" />
-    <Compile Include="GameScreen.cs">
+    <Compile Include="Actors\Actor.cs" />
+    <Compile Include="Factories\ActorFactory.cs" />
+    <Compile Include="Attacks\Attack.cs" />
+    <Compile Include="Attacks\AttackBurn.cs" />
+    <Compile Include="Attacks\AttackChopcs.cs" />
+    <Compile Include="Attacks\AttackFreeze.cs" />
+    <Compile Include="Attacks\AttackMode.cs" />
+    <Compile Include="Misc\AIController.cs" />
+    <Compile Include="Attacks\AttackSmile.cs" />
+    <Compile Include="Attacks\AttackWizzardStick.cs" />
+    <Compile Include="Misc\DefenseMode.cs" />
+    <Compile Include="Game\Drawable.cs" />
+    <Compile Include="Actors\Floor.cs" />
+    <Compile Include="Screens\GameScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameScreen.Designer.cs">
+    <Compile Include="Screens\GameScreen.Designer.cs">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="GoldHighlight.cs" />
-    <Compile Include="GridTestForm.cs">
+    <Compile Include="Actors\GoldHighlight.cs" />
+    <Compile Include="Screens\GridTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GridTestForm.Designer.cs">
+    <Compile Include="Screens\GridTestForm.Designer.cs">
       <DependentUpon>GridTestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HeroNode.cs" />
-    <Compile Include="HeroSelection.cs">
+    <Compile Include="Misc\HeroNode.cs" />
+    <Compile Include="Screens\HeroSelection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HeroSelection.Designer.cs">
+    <Compile Include="Screens\HeroSelection.Designer.cs">
       <DependentUpon>HeroSelection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Highlight.cs" />
-    <Compile Include="LevelForm.cs">
+    <Compile Include="Actors\Highlight.cs" />
+    <Compile Include="Screens\LevelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LevelForm.Designer.cs">
+    <Compile Include="Screens\LevelForm.Designer.cs">
       <DependentUpon>LevelForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MapFactory.cs" />
-    <Compile Include="MoveThrough.cs" />
+    <Compile Include="Factories\MapFactory.cs" />
+    <Compile Include="Movement\MoveThrough.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SpecialBow.cs" />
-    <Compile Include="SpecialCheerLeader.cs" />
-    <Compile Include="SpecialExplode.cs" />
-    <Compile Include="SpecialHeal.cs" />
-    <Compile Include="SpecialMode.cs" />
-    <Compile Include="SpecialRockThrowing.cs" />
-    <Compile Include="SpecialSacrifice.cs" />
-    <Compile Include="SpecialSneakAttack.cs" />
-    <Compile Include="SpecialVampireBite.cs" />
-    <Compile Include="StartGame.cs">
+    <Compile Include="Specials\SpecialBow.cs" />
+    <Compile Include="Specials\SpecialCheerLeader.cs" />
+    <Compile Include="Specials\SpecialExplode.cs" />
+    <Compile Include="Specials\SpecialHeal.cs" />
+    <Compile Include="Specials\SpecialMode.cs" />
+    <Compile Include="Specials\SpecialRockThrowing.cs" />
+    <Compile Include="Specials\SpecialSacrifice.cs" />
+    <Compile Include="Specials\SpecialSneakAttack.cs" />
+    <Compile Include="Specials\SpecialVampireBite.cs" />
+    <Compile Include="Screens\StartGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StartGame.Designer.cs">
+    <Compile Include="Screens\StartGame.Designer.cs">
       <DependentUpon>StartGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrapExplosive.cs" />
-    <Compile Include="Grid.cs" />
-    <Compile Include="AttackSlash.cs" />
-    <Compile Include="MoveGround.cs" />
-    <Compile Include="MoveMode.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="Pawn.cs" />
-    <Compile Include="PawnFactory.cs" />
+    <Compile Include="Actors\TrapExplosive.cs" />
+    <Compile Include="Game\Grid.cs" />
+    <Compile Include="Attacks\AttackSlash.cs" />
+    <Compile Include="Movement\MoveGround.cs" />
+    <Compile Include="Movement\MoveMode.cs" />
+    <Compile Include="Game\Tile.cs" />
+    <Compile Include="Actors\Pawn.cs" />
+    <Compile Include="Misc\PawnFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TileComposite.cs" />
-    <Compile Include="TileSet.cs" />
-    <Compile Include="Structure.cs" />
-    <Compile Include="Switch.cs" />
-    <Compile Include="Trap.cs" />
-    <Compile Include="TurnManager.cs" />
-    <Compile Include="Wall.cs" />
+    <Compile Include="Misc\TileComposite.cs" />
+    <Compile Include="Misc\TileSet.cs" />
+    <Compile Include="Actors\Structure.cs" />
+    <Compile Include="Actors\Switch.cs" />
+    <Compile Include="Actors\Trap.cs" />
+    <Compile Include="Misc\TurnManager.cs" />
+    <Compile Include="Actors\Wall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="GameScreen.resx">
+    <EmbeddedResource Include="Screens\GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GridTestForm.resx">
+    <EmbeddedResource Include="Screens\GridTestForm.resx">
       <DependentUpon>GridTestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HeroSelection.resx">
+    <EmbeddedResource Include="Screens\HeroSelection.resx">
       <DependentUpon>HeroSelection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LevelForm.resx">
+    <EmbeddedResource Include="Screens\LevelForm.resx">
       <DependentUpon>LevelForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="StartGame.resx">
+    <EmbeddedResource Include="Screens\StartGame.resx">
       <DependentUpon>StartGame.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -213,6 +213,7 @@
   <ItemGroup>
     <None Include="bin\Debug\bitmap\cooltext1937978849.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
