@@ -37,7 +37,7 @@ namespace TheTower
             this.Party = pParty;
 
             //Create all the actor delegates and add them to the ActorFactory
-            this.createActorDelegates();
+            ActorDelegates.init();
 
         
             //create the level using the map factory
@@ -117,49 +117,5 @@ namespace TheTower
             }
             this.Refresh();
         }
-
-
-        #region actor_delegates
-        /**-------------------------------------SECTION for creating actor delegates ---------------------------------*/
-        /**
-         * Sets up all the actor delegates and adds them to the ActorFactory
-         * @author Jakob Wilson
-         * */
-        private void createActorDelegates()
-        {
-            ActorFactory.actorMethod floorDel = createFloor;//create the actorMethod delegate
-            ActorFactory.addActorMethod("Floor", floorDel); //add it to the Actor Factory
-
-            ActorFactory.actorMethod wallDel = createWall;
-            ActorFactory.addActorMethod("Wall", wallDel);
-        }
-
-        /**
-         * Creates a floor actor
-         * @see ActorFactory.actorMethod
-         * @author Jakob Wilson
-         * */
-        public static Actor createFloor(XmlNode data)
-        {
-            Actor ret = new Floor("Floor", 0);
-            ret.setImage(Image.FromFile(data.SelectSingleNode("image").Attributes["source"].Value));
-            return ret;
-        }
-
-
-        /**
-         * creates a wall actor
-         * @see ActorFactory.actorMethod
-         * @author Jakob Wilson
-         * */
-        public static Actor createWall(XmlNode data)
-        {
-            Actor ret = new Wall("Wall", 0);
-            ret.setImage(Image.FromFile(data.SelectSingleNode("image").Attributes["source"].Value));
-            return ret;
-        }
-        #endregion
-
-
     }
 }

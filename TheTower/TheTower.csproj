@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Actors\PlayerCard.cs" />
+    <Compile Include="Factories\ActorDelegates.cs" />
     <Compile Include="Factories\ActorFactory.cs" />
     <Compile Include="Attacks\Attack.cs" />
     <Compile Include="Attacks\AttackBurn.cs" />

@@ -35,7 +35,6 @@ namespace TheTower
                         return actorMethods[property.Attributes["value"].Value](data);
                     }catch( KeyNotFoundException e)
                     {
-
                         throw new Exception("Could not create actor because no delegate is defined. Error: " + e.ToString());
                     }
                 }
