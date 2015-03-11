@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TheTower.Actors;
 
 namespace TheTower
 {
@@ -46,6 +47,14 @@ namespace TheTower
         public bool CanAttack()
         {
             return this.AP >= this.Attack.GetCost();
+        }
+        public bool CanMove()
+        {
+            return this.AP >= this.Move.GetCost();
+        }
+        public bool CanSpecial()
+        {
+            return this.AP >= this.Special.GetCost();
         }
         public bool CanAct()
         {
@@ -157,5 +166,14 @@ namespace TheTower
         {
             this.Special = special;
         }
+
+        /**
+         * gets a gui tile that the pawn draws its information to
+         * */
+        public Actor getCard()
+        {
+            return new PlayerCard(this);
+        }
+
     }
 }

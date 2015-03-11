@@ -10,10 +10,14 @@ namespace TheTower
         private int column;
         private int tileWidth;
         private int tileHeight;
+        private int _offsetx;
+        private int _offsety;
 
         public Grid()
         {
             this.headTile = null;
+            this._offsetx = 0;
+            this._offsety = 0;
         }
 
         public void SetRow(int row)
@@ -210,7 +214,7 @@ namespace TheTower
                 yPos += tileHeight;
                 for (Tile x = y; x != null; x = x.down)
                 {
-                    x.render(e,xPos,yPos);
+                    x.render(e,xPos + this._offsetx,yPos + this._offsety);
                     xPos += tileWidth;///Make variable
                 }
             }
@@ -223,5 +227,14 @@ namespace TheTower
             return ret;
         }
 
+        /**
+         * Sets the offset of the grid for rendering
+         * @author Jakob Wilson
+         * */
+        public void setPosition(int x, int y)
+        {
+            this._offsetx = x;
+            this._offsety = y;
+        }
     }
 }

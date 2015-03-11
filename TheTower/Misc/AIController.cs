@@ -10,29 +10,46 @@ namespace TheTower
     {
         private Pawn AIPawn;
         private Tile Target;
-        public AIController(Pawn p)
+        private bool isValidTarget;
+        public AIController()
         {
-            this.AIPawn=p;
+            this.AIPawn = null;
+            this.Target = null;
+            this.isValidTarget = false;
+        }
+        public void SetPawn(Pawn p)
+        {
+            this.Target = null;
+            this.isValidTarget = false;
+            this.AIPawn = p;
         }
         public void ExecuteTurn()
         {
-            this.SearchForTarget(20);// 20 == search range
-            while(this.AIPawn.CanAct())
-            {
-                if (this.Target != null)
+            this.isValidTarget = false;
+            if(this.Target!=null)
+                foreach (Actor a in this.Target.GetData())
                 {
-                    if (!this.AIPawn.GetAttackRange().Contains(Target))
+                    if ((a as Pawn).GetTags().Contains("Hero") && !(a as Pawn).Dead)
                     {
-                        StepTowardsTarget();
+                        this.isValidTarget = true;
                     }
-                    else
-                    {
-                        AttackTarget();
-                    }
+                }
+            if(!this.isValidTarget)
+                this.SearchForTarget(20);// 20 == search range
+            if(!this.isValidTarget)
+            {
+                this.Target = null;
+                this.AIPawn.RemoveAP(this.AIPawn.AP);
+            }
+            else
+            {
+                if (!this.AIPawn.GetAttackRange().Contains(Target))
+                {
+                    StepTowardsTarget();
                 }
                 else
                 {
-                    this.AIPawn.RemoveAP(this.AIPawn.AP);
+                    AttackTarget();
                 }
             }
         }
@@ -145,6 +162,7 @@ namespace TheTower
                     if (!(a as Pawn).Dead)
                     {
                         this.Target = Origin;
+                        this.isValidTarget = true;
                         return;
                     }
                 }

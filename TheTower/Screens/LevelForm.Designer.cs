@@ -28,19 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Box_Party = new System.Windows.Forms.GroupBox();
             this.Lbl_Turn = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // Box_Party
-            // 
-            this.Box_Party.Location = new System.Drawing.Point(0, 640);
-            this.Box_Party.Margin = new System.Windows.Forms.Padding(0);
-            this.Box_Party.Name = "Box_Party";
-            this.Box_Party.Size = new System.Drawing.Size(1024, 128);
-            this.Box_Party.TabIndex = 0;
-            this.Box_Party.TabStop = false;
-            this.Box_Party.Text = "Party";
             // 
             // Lbl_Turn
             // 
@@ -62,7 +51,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 770);
             this.Controls.Add(this.Lbl_Turn);
-            this.Controls.Add(this.Box_Party);
             this.Name = "LevelForm";
             this.Text = "LevelForm";
             this.Click += new System.EventHandler(this.LevelForm_Click);
@@ -74,7 +62,6 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox Box_Party;
         private System.Windows.Forms.Label Lbl_Turn;
     }
 }

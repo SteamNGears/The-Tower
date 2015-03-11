@@ -65,12 +65,12 @@
             // 
             this.btReady.BackColor = System.Drawing.Color.Transparent;
             this.btReady.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btReady.Font = new System.Drawing.Font("Goudy Stout", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btReady.ForeColor = System.Drawing.SystemColors.Control;
             this.btReady.Location = new System.Drawing.Point(736, 666);
             this.btReady.Name = "btReady";
             this.btReady.Size = new System.Drawing.Size(260, 51);
-            this.btReady.TabIndex = 1;
+            this.btReady.TabIndex = 13;
             this.btReady.Text = "Ready";
             this.btReady.UseVisualStyleBackColor = false;
             this.btReady.Click += new System.EventHandler(this.btReady_Click);
@@ -79,12 +79,12 @@
             // 
             this.btBack.BackColor = System.Drawing.Color.Transparent;
             this.btBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btBack.Font = new System.Drawing.Font("Goudy Stout", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btBack.ForeColor = System.Drawing.SystemColors.Control;
             this.btBack.Location = new System.Drawing.Point(12, 666);
             this.btBack.Name = "btBack";
             this.btBack.Size = new System.Drawing.Size(260, 51);
-            this.btBack.TabIndex = 2;
+            this.btBack.TabIndex = 14;
             this.btBack.Text = "Cancel";
             this.btBack.UseVisualStyleBackColor = false;
             this.btBack.Click += new System.EventHandler(this.btBack_Click);
@@ -95,7 +95,7 @@
             this.btHero4.Location = new System.Drawing.Point(802, 12);
             this.btHero4.Name = "btHero4";
             this.btHero4.Size = new System.Drawing.Size(100, 250);
-            this.btHero4.TabIndex = 3;
+            this.btHero4.TabIndex = 4;
             this.btHero4.UseVisualStyleBackColor = true;
             this.btHero4.Click += new System.EventHandler(this.btHero4_Click);
             // 
@@ -105,7 +105,7 @@
             this.btHero8.Location = new System.Drawing.Point(802, 265);
             this.btHero8.Name = "btHero8";
             this.btHero8.Size = new System.Drawing.Size(100, 250);
-            this.btHero8.TabIndex = 4;
+            this.btHero8.TabIndex = 8;
             this.btHero8.UseVisualStyleBackColor = true;
             this.btHero8.Click += new System.EventHandler(this.btHero8_Click);
             // 
@@ -115,7 +115,7 @@
             this.btHero7.Location = new System.Drawing.Point(540, 265);
             this.btHero7.Name = "btHero7";
             this.btHero7.Size = new System.Drawing.Size(100, 250);
-            this.btHero7.TabIndex = 6;
+            this.btHero7.TabIndex = 7;
             this.btHero7.UseVisualStyleBackColor = true;
             this.btHero7.Click += new System.EventHandler(this.btHero7_Click);
             // 
@@ -125,7 +125,7 @@
             this.btHero3.Location = new System.Drawing.Point(540, 12);
             this.btHero3.Name = "btHero3";
             this.btHero3.Size = new System.Drawing.Size(100, 250);
-            this.btHero3.TabIndex = 5;
+            this.btHero3.TabIndex = 3;
             this.btHero3.UseVisualStyleBackColor = true;
             this.btHero3.Click += new System.EventHandler(this.btHero3_Click);
             // 
@@ -135,7 +135,7 @@
             this.btHero6.Location = new System.Drawing.Point(278, 268);
             this.btHero6.Name = "btHero6";
             this.btHero6.Size = new System.Drawing.Size(100, 250);
-            this.btHero6.TabIndex = 8;
+            this.btHero6.TabIndex = 6;
             this.btHero6.UseVisualStyleBackColor = true;
             this.btHero6.Click += new System.EventHandler(this.btHero6_Click);
             // 
@@ -145,7 +145,7 @@
             this.btHero2.Location = new System.Drawing.Point(278, 12);
             this.btHero2.Name = "btHero2";
             this.btHero2.Size = new System.Drawing.Size(100, 250);
-            this.btHero2.TabIndex = 7;
+            this.btHero2.TabIndex = 2;
             this.btHero2.UseVisualStyleBackColor = true;
             this.btHero2.Click += new System.EventHandler(this.btHero2_Click);
             // 
@@ -155,7 +155,7 @@
             this.btHero5.Location = new System.Drawing.Point(12, 268);
             this.btHero5.Name = "btHero5";
             this.btHero5.Size = new System.Drawing.Size(100, 250);
-            this.btHero5.TabIndex = 10;
+            this.btHero5.TabIndex = 5;
             this.btHero5.UseVisualStyleBackColor = true;
             this.btHero5.Click += new System.EventHandler(this.btHero5_Click);
             // 
@@ -165,14 +165,14 @@
             this.btHero1.Location = new System.Drawing.Point(12, 12);
             this.btHero1.Name = "btHero1";
             this.btHero1.Size = new System.Drawing.Size(100, 250);
-            this.btHero1.TabIndex = 9;
+            this.btHero1.TabIndex = 1;
             this.btHero1.UseVisualStyleBackColor = true;
             this.btHero1.Click += new System.EventHandler(this.btHero1_Click);
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(122, 12);
             this.label1.Name = "label1";
@@ -183,7 +183,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(384, 12);
             this.label2.Name = "label2";
@@ -194,7 +194,7 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(646, 12);
             this.label3.Name = "label3";
@@ -205,7 +205,7 @@
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(908, 12);
             this.label4.Name = "label4";
@@ -216,7 +216,7 @@
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(908, 265);
             this.label5.Name = "label5";
@@ -227,7 +227,7 @@
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label6.Location = new System.Drawing.Point(646, 265);
             this.label6.Name = "label6";
@@ -238,7 +238,7 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Location = new System.Drawing.Point(384, 265);
             this.label7.Name = "label7";
@@ -249,7 +249,7 @@
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label8.Location = new System.Drawing.Point(118, 268);
             this.label8.Name = "label8";
@@ -294,7 +294,7 @@
             this.tbHero1.Location = new System.Drawing.Point(12, 603);
             this.tbHero1.Name = "tbHero1";
             this.tbHero1.Size = new System.Drawing.Size(100, 20);
-            this.tbHero1.TabIndex = 23;
+            this.tbHero1.TabIndex = 9;
             this.tbHero1.TextChanged += new System.EventHandler(this.tbHero1_TextChanged);
             // 
             // tbHero3
@@ -302,7 +302,7 @@
             this.tbHero3.Location = new System.Drawing.Point(540, 603);
             this.tbHero3.Name = "tbHero3";
             this.tbHero3.Size = new System.Drawing.Size(100, 20);
-            this.tbHero3.TabIndex = 24;
+            this.tbHero3.TabIndex = 11;
             this.tbHero3.TextChanged += new System.EventHandler(this.tbHero3_TextChanged);
             // 
             // tbHero4
@@ -310,7 +310,7 @@
             this.tbHero4.Location = new System.Drawing.Point(802, 603);
             this.tbHero4.Name = "tbHero4";
             this.tbHero4.Size = new System.Drawing.Size(100, 20);
-            this.tbHero4.TabIndex = 25;
+            this.tbHero4.TabIndex = 12;
             this.tbHero4.TextChanged += new System.EventHandler(this.tbHero4_TextChanged);
             // 
             // tbHero2
@@ -318,7 +318,7 @@
             this.tbHero2.Location = new System.Drawing.Point(278, 603);
             this.tbHero2.Name = "tbHero2";
             this.tbHero2.Size = new System.Drawing.Size(100, 20);
-            this.tbHero2.TabIndex = 26;
+            this.tbHero2.TabIndex = 10;
             this.tbHero2.TextChanged += new System.EventHandler(this.tbHero2_TextChanged);
             // 
             // HeroSelection

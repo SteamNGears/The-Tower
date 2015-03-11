@@ -21,6 +21,12 @@ namespace TheTower
     // ALSO ADD IN A COMPLETE WALL AND FLOOR CLASS FOR USE IN TESTING
     public abstract class Actor : Drawable
     {
+        public string Name { get; private set; }
+        protected int ID;
+        protected Image Img;
+        protected List<string> Tags;
+        protected Tile CurTile;
+
         public Actor(string name, int id)
         {
             this.ID = id;
@@ -30,19 +36,12 @@ namespace TheTower
             this.Tags.Add("Drawable");
             this.Img = null;
         }
-        public string Name { get; private set; }
-        protected int ID;
-
-        protected Image Img;
-        protected List<string> Tags;
-
-        protected Tile CurTile;
 
         public int GetId()
         {
             return this.ID;
         }
-        public void Draw(PaintEventArgs e, int x, int y)
+        public virtual void Draw(PaintEventArgs e, int x, int y)
         {
             if(this.Img!=null)
                 e.Graphics.DrawImage(this.Img, x, y, this.Img.Width, this.Img.Height);
@@ -76,6 +75,20 @@ namespace TheTower
         public List<string> GetTags()
         {
             return this.Tags;
+        }
+
+        /**
+         *  Checks if ana actor has a specific tag
+         * */
+        public bool hasTag(String s)
+        {
+            bool ret = false;
+            foreach (String tag in this.Tags)
+            {
+                if (tag.Equals(s))
+                    ret = true;
+            }
+            return ret;
         }
 
         /**
