@@ -42,6 +42,8 @@ namespace TheTower
         
             //create the level using the map factory
             this.Level = MapFactory.CreateMap("Level1.tmx");
+            this.Level.setPosition(0, 96);
+            
             this.Gui = new Grid();
             this.Gui.SetGrid(4, 1);
             this.Gui.setTileHeight(128);
@@ -97,22 +99,27 @@ namespace TheTower
          * */
         private void LevelForm_Click(object sender, EventArgs e)
         {
+            this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+            MessageBox.Show("Got tile:" + this.selectedTile.x + ", " + this.selectedTile.y);
+            
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 if (this.selectedTile != null)
                 {
                     Options options = this.Turns.getOptions(this.selectedTile);
                     if (options != null)
+                    {
                         Console.WriteLine("move: " + options.canMove + " attack: " + options.canAttack + " special: " + options.canSpecial);
+                        Actor a = new TileSelect(options);
+                        this.selectedTile.AddActor(a);
+                    }
                     else
                         Console.WriteLine("no current pawn");
                 }
             }
             else
             {
-                this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
-                Actor a = new Floor("Highlight", 8);
-                a.setImage(this.highlight);
+                Actor a = new TileSelect(new Options(true, true, true));
                 this.selectedTile.AddActor(a);
             }
             this.Refresh();

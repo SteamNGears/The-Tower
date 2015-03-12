@@ -166,6 +166,12 @@ namespace TheTower
         }
         private void btReady_Click(object sender, EventArgs e)
         {
+            foreach(HeroNode type in heroQueue)
+            {
+                if (type.HeroClass == null)
+                    return;
+            }
+
             PawnFactory fact = new PawnFactory();
             Pawn[] party = new Pawn[4];
             party[0] = makingHero(fact, ((HeroNode)heroQueue[0]).HeroClass, ((HeroNode)heroQueue[0]).UserNamed);

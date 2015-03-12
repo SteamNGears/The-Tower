@@ -434,7 +434,7 @@ namespace TheTower
          * */
         public void render(PaintEventArgs e, int x, int y)
         {
-           
+            //MessageBox.Show("Drawing tile " + x + ", " + y);
             foreach (Actor a in this.Actors)
             {
                 a.Draw(e, x, y);

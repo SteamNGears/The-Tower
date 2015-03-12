@@ -44,7 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\Actor.cs" />
+    <Compile Include="Actors\Players\BasePlayer.cs" />
+    <Compile Include="Actors\Players\Enemies\BaseEnemy.cs" />
+    <Compile Include="Actors\Players\Heroes\BaseHero.cs" />
     <Compile Include="Actors\PlayerCard.cs" />
+    <Compile Include="Actors\TileSelect.cs" />
     <Compile Include="Factories\ActorDelegates.cs" />
     <Compile Include="Factories\ActorFactory.cs" />
     <Compile Include="Attacks\Attack.cs" />

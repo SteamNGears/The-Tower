@@ -44,7 +44,7 @@ namespace TheTower
         public virtual void Draw(PaintEventArgs e, int x, int y)
         {
             if(this.Img!=null)
-                e.Graphics.DrawImage(this.Img, x, y, this.Img.Width, this.Img.Height);
+                e.Graphics.DrawImage(this.Img, x , y - this.Img.Height, this.Img.Width, this.Img.Height);
         }
         public override bool Equals(object obj)
         {

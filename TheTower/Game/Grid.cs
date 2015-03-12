@@ -206,7 +206,7 @@ namespace TheTower
         {
             Tile t = this.headTile;
             int xPos = 0;
-            int yPos = -this.tileHeight;
+            int yPos = 0;
 
             for (Tile y = this.headTile; y != null; y = y.right)
             {
@@ -214,7 +214,7 @@ namespace TheTower
                 yPos += tileHeight;
                 for (Tile x = y; x != null; x = x.down)
                 {
-                    x.render(e,xPos + this._offsetx,yPos + this._offsety);
+                    x.render(e,xPos + this._offsetx,yPos + this._offsety - this.tileHeight);
                     xPos += tileWidth;///Make variable
                 }
             }
@@ -222,8 +222,7 @@ namespace TheTower
 
         public Tile getTileAt(int x, int y) 
         {
-            Tile ret = this.GetTile((int)x / this.tileWidth, (int)y / this.tileHeight);//SWITCH WHEN GRID IS FIXED
-            
+            Tile ret = this.GetTile((int)(x + this._offsetx) / this.tileWidth, (int)(y -  this._offsety + this.tileHeight) / this.tileHeight);//SWITCH WHEN GRID IS FIXED
             return ret;
         }
 
