@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace TheTower
 {
+    /**
+     * Long Nguyen
+     * Attack SubClass - WizzardStick
+     * Type - Blunt
+     * Single Target - Melee
+     */
     class AttackWizzardStick : AttackMode
     {
         public AttackWizzardStick(Pawn owner)
             : base(owner)
         {
             typeList = new List<string>();
-            typeList.Add("WizzardStick");
+            typeList.Add("Blunt");
             this.Cost = 5;
         }
         public override int ModDamage()

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,22 +7,23 @@ using System.Threading.Tasks;
 namespace TheTower
 {
     /**
-     * Lucas Salom
-     * Attack SubClass - Burn
-     * Type - Fire
-     * Single Target - Ranged
+     * Long Nguyen
+     * Attack SubClass - Chop
+     * Type - Chop
+     * Single Target - Melee
      */
-    public class AttackBurn : AttackMode
+    public class AttackChop : AttackMode
     {
-        public AttackBurn(Pawn owner) : base(owner)
+        public AttackChop(Pawn owner) : base(owner)
         {
             typeList = new List<string>();
-            typeList.Add("Fire");
-            this.Cost = 4;
+            typeList.Add("Blunt");
+            typeList.Add("Slashing");
+            this.Cost = 5;
         }
         public override int ModDamage()
         {
-            return (int)(this.Owner.GetPower() * 0.8);
+            return (int)(this.Owner.GetPower() * 1);
         }
         public override TileComposite GetAoeRange(Tile tile)
         {
@@ -30,7 +31,7 @@ namespace TheTower
         }
         public override TileComposite GetAttackRange()
         {
-            return this.Owner.GetTile().GetRange(6);
+            return this.Owner.GetTile().GetRange(2);
         }
     }
 }

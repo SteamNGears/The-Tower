@@ -18,7 +18,7 @@ namespace TheTower
         private Pawn[] Party;
         private Grid Level;         //the level grid
         private Grid Gui;           //The gui grid(player cards)
-        private PawnFactory fact;
+        private HeroFactory fact;
         private Tile selectedTile;
         private TurnManager Turns;
 
@@ -48,14 +48,16 @@ namespace TheTower
             this.Gui.setTileWidth(256);
             this.Gui.setPosition(0, 640);
 
-            this.fact = new PawnFactory();
+            this.fact = new HeroFactory();
 
             this.Turns = new TurnManager();
             foreach (Pawn a in pParty)
             {
                 this.Turns.AddPawn(a);
             }
-            this.Turns.AddPawn(fact.MakeBomb("Derpo"));
+            Pawn bomb = fact.MakeBomb("Derpo");
+            Level.GetTile(7, 4).AddActor(bomb);
+            this.Turns.AddPawn(bomb);
             this.selectedTile = null;
 
             if (this.Turns.NextTurn() == 1)
@@ -111,7 +113,7 @@ namespace TheTower
             else
             {
                 this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
-                Actor a = new Floor("Highlight", 8);
+                Actor a = new Floor("Highlight",8);
                 a.setImage(this.highlight);
                 this.selectedTile.AddActor(a);
             }

@@ -5,6 +5,7 @@ namespace TheTower
 {
     public class Grid
     {
+        #region Member Variables and Ctor
         private Tile headTile;
         private int row;
         private int column;
@@ -20,87 +21,30 @@ namespace TheTower
             this._offsety = 0;
         }
 
+        #endregion
+
+        #region Setters
         public void SetRow(int row)
         {
             this.row = row;
         }
-
-        public int GetRow()
-        {
-            return this.row;
-        }
-
         public void SetColumn(int column)
         {
             this.column = column;
         }
-
-        public int GetColumn()
-        {
-            return this.column;
-        }
-
         public void SetHeadTile(Tile headTile)
         {
             this.headTile = headTile;
         }
-
-        public Tile GetHeadTile()
+        /**
+         * Sets the offset of the grid for rendering
+         * @author Jakob Wilson
+         * */
+        public void setPosition(int x, int y)
         {
-            return this.headTile;
+            this._offsetx = x;
+            this._offsety = y;
         }
-
-        /*--------------GETTERS/SETTERS FOR TILE WIDTH/HEIGHT----------*/
-        /** Sets the tile width for each tile*/
-        public void setTileWidth(int width) { this.tileWidth = width; }
-
-        /** Sets the tile height for each tile*/
-        public void setTileHeight(int height) { this.tileHeight = height; }
-
-        /** Gets the tile width for each tile*/
-        public int getTileWidth() { return this.tileWidth; }
-
-        /** Gets the tile width for each tile*/
-        public int getTileHeight() { return this.tileHeight; }
-        /*----------------------------------------------------------------*/
-
-        /*
-         *  return the Tile from the bottom left of the grid system 
-         */ 
-        public Tile GetLastTile()
-        {
-            Tile cur = this.headTile;
-            while (cur.down != null)
-            {
-                cur = cur.down;
-            }
-            while (cur.right != null)
-            {
-                cur = cur.right;
-            }
-            return cur;
-        }
-
-
-        /*
-         *  return the Tile base on the index
-         */ 
-        public Tile GetTile(int rowIndex, int columnIndex)
-        {
-            Tile cur = null;
-            if (rowIndex < this.row && columnIndex < this.column)
-            {
-                cur = this.headTile;
-                for (int x = 0; x < rowIndex; x++)
-                    cur = cur.down;
-                for (int y = 0; y < columnIndex; y++)
-                    cur = cur.right;
-            }
-            else
-                throw new IndexOutOfRangeException("You have walked off the grid with" + rowIndex + ", " + columnIndex);
-            return cur;
-        }
-
         /*
          *  set data of a Tile at specific index
          */
@@ -113,7 +57,7 @@ namespace TheTower
 
         /*
          *  create a grid system that have #row and #column
-         */ 
+         */
         public void SetGrid(int row, int column)
         {
             this.row = row;
@@ -125,7 +69,7 @@ namespace TheTower
             {
                 Tile newTile = new Tile();
                 if (this.headTile == null)      //if the grid is empty
-                { 
+                {
                     this.headTile = newTile;
                     lastTile = this.headTile;
                     curRowIndex++;
@@ -143,9 +87,9 @@ namespace TheTower
                         newTile.x = curRowIndex;
                         newTile.y = curColumnIndex;
                     }
-                    else if(curColumnIndex == column - 1)                   //if we are reaching the column limit of the row
+                    else if (curColumnIndex == column - 1)                   //if we are reaching the column limit of the row
                     {
-                        Tile upTile = GetTile(curRowIndex,0);
+                        Tile upTile = GetTile(curRowIndex, 0);
                         newTile.ConnectUp(upTile);
                         if (upTile.left != null)
                             newTile.ConnectUpLeft(upTile.left);
@@ -175,6 +119,83 @@ namespace TheTower
             }
         }
 
+        #endregion
+
+        #region Getters
+        public int GetRow()
+        {
+            return this.row;
+        }
+        public int GetColumn()
+        {
+            return this.column;
+        }
+        public Tile GetHeadTile()
+        {
+            return this.headTile;
+        }
+        /*
+         *  return the Tile from the bottom left of the grid system 
+         */
+        public Tile GetLastTile()
+        {
+            Tile cur = this.headTile;
+            while (cur.down != null)
+            {
+                cur = cur.down;
+            }
+            while (cur.right != null)
+            {
+                cur = cur.right;
+            }
+            return cur;
+        }
+
+
+        /*
+         *  return the Tile base on the index
+         */
+        public Tile GetTile(int rowIndex, int columnIndex)
+        {
+            Tile cur = null;
+            if (rowIndex < this.row && columnIndex < this.column)
+            {
+                cur = this.headTile;
+                for (int x = 0; x < rowIndex; x++)
+                    cur = cur.down;
+                for (int y = 0; y < columnIndex; y++)
+                    cur = cur.right;
+            }
+            else
+                throw new IndexOutOfRangeException("You have walked off the grid with" + rowIndex + ", " + columnIndex);
+            return cur;
+        }
+        public Tile getTileAt(int x, int y)
+        {
+            Tile ret = this.GetTile((int)x / this.tileWidth, (int)y / this.tileHeight);//SWITCH WHEN GRID IS FIXED
+
+            return ret;
+        }
+
+#endregion
+
+        #region Tile Width Height
+        /*--------------GETTERS/SETTERS FOR TILE WIDTH/HEIGHT----------*/
+        /** Sets the tile width for each tile*/
+        public void setTileWidth(int width) { this.tileWidth = width; }
+
+        /** Sets the tile height for each tile*/
+        public void setTileHeight(int height) { this.tileHeight = height; }
+
+        /** Gets the tile width for each tile*/
+        public int getTileWidth() { return this.tileWidth; }
+
+        /** Gets the tile width for each tile*/
+        public int getTileHeight() { return this.tileHeight; }
+        /*----------------------------------------------------------------*/
+        #endregion
+
+        #region Miscellaneous Methods
         /*
          *  print out the grid for testing
          */ 
@@ -202,6 +223,9 @@ namespace TheTower
          * @NOTE The grid class has some issues with how tiles are tied together(right/down refs are messed up) so this patches by swapping right and up in double for looping
          * @author Jakob Wilson
          * * */
+        #endregion
+
+        #region Drawing
         public void render(PaintEventArgs e)
         {
             Tile t = this.headTile;
@@ -219,22 +243,7 @@ namespace TheTower
                 }
             }
         }
+        #endregion
 
-        public Tile getTileAt(int x, int y) 
-        {
-            Tile ret = this.GetTile((int)x / this.tileWidth, (int)y / this.tileHeight);//SWITCH WHEN GRID IS FIXED
-            
-            return ret;
-        }
-
-        /**
-         * Sets the offset of the grid for rendering
-         * @author Jakob Wilson
-         * */
-        public void setPosition(int x, int y)
-        {
-            this._offsetx = x;
-            this._offsety = y;
-        }
     }
 }

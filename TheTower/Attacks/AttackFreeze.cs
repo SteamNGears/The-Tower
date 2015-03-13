@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace TheTower
 {
+    /**
+     * Lucas Salom
+     * Attack SubClass - Freeze
+     * Type - Ice
+     * Single Target - Ranged
+     */
     public class AttackFreeze : AttackMode
     {
         public AttackFreeze(Pawn owner)

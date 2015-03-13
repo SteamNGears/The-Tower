@@ -11,7 +11,7 @@ namespace TheTower
         private String heroName;
         private String userNamed;
         private String imagePath;
-        private String heroClass;
+        private String heroClass ="";
 
         public HeroNode(String heroName)
         {
@@ -46,11 +46,11 @@ namespace TheTower
             String path = System.IO.Directory.GetCurrentDirectory();
             if(heroName.Length != 0)
             {               
-                imagePath = String.Format(path + "/bitmap/hero{0} 50x50.jpg", heroName[5]);
+                imagePath = String.Format(path + "\\bitmap\\hero{0} 50x50.png", heroName[5]);
             }
             else
             {
-                imagePath = path + "/bitmap/dice0.png";
+                imagePath = path + "\\bitmap\\dice0.png";
             }           
         }
 

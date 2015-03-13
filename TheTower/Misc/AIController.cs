@@ -8,12 +8,14 @@ namespace TheTower
 {
     public class AIController
     {
+
+        #region Member Variables, Ctor, and Setters/Getters
         private Pawn AIPawn;
         private Tile Target;
         private bool isValidTarget;
-        public AIController()
+        public AIController(Pawn p)
         {
-            this.AIPawn = null;
+            this.AIPawn = p;
             this.Target = null;
             this.isValidTarget = false;
         }
@@ -23,6 +25,17 @@ namespace TheTower
             this.isValidTarget = false;
             this.AIPawn = p;
         }
+        #endregion
+
+        #region Actions
+
+        /**
+         * Lucas Salom
+         * Initiates AI Decision Making
+         * 1) Finds Target
+         * 2) Gets into attack range
+         * 3) Uses Action Based on Situation
+         */
         public void ExecuteTurn()
         {
             this.isValidTarget = false;
@@ -53,6 +66,11 @@ namespace TheTower
                 }
             }
         }
+
+        /**
+         * Lucas Salom
+         * Commits the AI to attack its target if possible.
+         */
         private void AttackTarget()
         {
             if(this.AIPawn.CanAttack())
@@ -64,6 +82,11 @@ namespace TheTower
                 this.AIPawn.RemoveAP(this.AIPawn.AP);
             }
         }
+
+        /**
+         * Lucas Salom
+         * Finds best path to get to target and begins movement.
+         */
         private void StepTowardsTarget()
         {
             double smallestDistance=0.0;
@@ -88,10 +111,21 @@ namespace TheTower
             }
             this.AIPawn.MoveTo(BestMovement);
         }
+        #endregion
+
+        #region Helper Methods
         private double CalculateDistance(Tile T1, Tile T2)
         {
             return Math.Sqrt(Math.Pow((T1.x-T2.x),2)+Math.Pow(T1.y-T2.y,2));
         }
+        #endregion
+
+        #region Search Methods
+
+        /**
+         * Lucas Salom
+         * Scans the given range for a valid target for the AI to pursue.
+         */
         private void SearchForTarget(int range)
         {
             Tile Origin = this.AIPawn.GetTile();
@@ -222,5 +256,7 @@ namespace TheTower
                 }
             }
         }
+
+        #endregion
     }
 }

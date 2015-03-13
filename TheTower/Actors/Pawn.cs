@@ -7,8 +7,8 @@ namespace TheTower
     public class Pawn : Actor
     {
 
-        public Pawn(string name, int id,int ap, int health, int speed, int power)
-            : base(name, id)
+        public Pawn(string name,int ID,int ap, int health, int speed, int power)
+            : base(name,ID)
         {
             this.Dead=false;
             this.AP = ap;
@@ -22,6 +22,7 @@ namespace TheTower
             this.Defense = null;
             this.Attack = null;
             this.MaxAP = this.AP;
+            this.AddTag("Pawn");
         }
         public int AP { get; private set; }
         public int MaxAP { get; private set; }

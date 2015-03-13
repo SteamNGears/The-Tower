@@ -39,6 +39,8 @@ namespace TheTower.Actors
         {
             if (this._background != null)
                 e.Graphics.DrawImage(this._background, x, y, this._background.Width, this._background.Height);
+            if (this._actorImg != null)
+                e.Graphics.DrawImage(this._actorImg, x, y, this._actorImg.Width, this._actorImg.Height);
 
             //setup
             System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 12);

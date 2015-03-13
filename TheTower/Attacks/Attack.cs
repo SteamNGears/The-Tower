@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace TheTower
 {
+    /**
+     * Lucas Salom
+     * Attack Class specifying damage dealt and the damage's type.
+     */
     public class Attack
     {
         public int Power { get; private set; }

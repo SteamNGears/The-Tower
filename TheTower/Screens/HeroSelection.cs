@@ -15,12 +15,23 @@ namespace TheTower
     {
         ArrayList heroQueue;
         LevelForm gameScreen;
+        private static readonly Random random = new Random();
+        private static readonly object syncLock = new object();
         public HeroSelection()
         {
             InitializeComponent();
             GoFullscreen(false);
             heroQueue = new ArrayList(4);
             InitializeHeroQueue();
+            foreach(Control c in this.Controls)
+            {
+                c.TabIndex = 99;
+            }
+            this.btReady.TabIndex = 5;
+            this.tbHero1.TabIndex = 1;
+            this.tbHero2.TabIndex = 2;
+            this.tbHero3.TabIndex = 3;
+            this.tbHero4.TabIndex = 4;
         }
 
         private void GoFullscreen(bool fullscreen)
@@ -121,7 +132,7 @@ namespace TheTower
         private void btHero8_Click(object sender, EventArgs e)
         {
             HeroNode newHero = new HeroNode("Hero 8");
-            newHero.HeroClass = "Warrior";
+            newHero.HeroClass = "Paladin";
             Enqueue(heroQueue, newHero);
             DrawHero();
         }
@@ -146,8 +157,70 @@ namespace TheTower
             ((HeroNode)heroQueue[3]).UserNamed = tbHero4.Text;
         }
 
-        private Pawn makingHero(PawnFactory fact, String heroClass, String heroName)
+        public static int RandomNumber(int min, int max)
         {
+            lock (syncLock)
+            { // synchronize
+                return random.Next(min, max);
+            }
+        }
+        private Pawn makingRandomHero(HeroFactory fact, String heroName)
+        {
+            int num = RandomNumber(0, 8);
+            if (num == 0)
+            {
+                if (heroName == null)
+                    heroName = "Warrior";
+                return fact.MakeWarrior(heroName);
+            }
+            else if (num == 1)
+            {
+                if (heroName == null)
+                    heroName = "Vampire";
+                return fact.MakeVampireHero(heroName);
+            }
+            else if (num == 2)
+            {
+                 if (heroName == null)
+                     heroName = "Miss World";
+                 return fact.MakeMissWorld(heroName);
+            }
+            else if (num == 3)
+            {
+                 if (heroName == null)
+                     heroName = "Wizzard";
+                return fact.MakeWizzard(heroName);
+            }
+                
+            else if (num == 4)
+            {
+                 if (heroName == null)
+                     heroName = "Elf";
+                 return fact.MakeElf(heroName);
+            }
+            else if (num == 5)
+            {
+                 if (heroName == null)
+                     heroName = "Shaolin Monk";
+                 return fact.MakeShaolinMonk(heroName);
+            }
+            else if (num == 6)
+            {
+                if (heroName == null)
+                    heroName = "Ninja";
+                return fact.MakeShaolinMonk(heroName);
+            }
+            else
+            {
+                if (heroName == null)
+                    heroName = "Paladin";
+                return fact.MakePaladin(heroName);
+            }
+        }
+        private Pawn makingHero(HeroFactory fact, String heroClass, String heroName)
+        {
+            if (heroName==null)
+                heroName = heroClass + "";
             if (heroClass.Equals("Warrior"))
                 return fact.MakeWarrior(heroName);
             else if (heroClass.Equals("Vampire"))
@@ -160,13 +233,17 @@ namespace TheTower
                 return fact.MakeElf(heroName);
             else if (heroClass.Equals("Shaolin Monk"))
                 return fact.MakeShaolinMonk(heroName);
+            else if (heroClass.Equals("Ninja"))
+                return fact.MakeNinja(heroName);
+            else if (heroClass.Equals("Paladin"))
+                return fact.MakePaladin(heroName); 
             else
-                return fact.MakeNinja(heroName);          
+                return makingRandomHero(fact, heroName);
 
         }
         private void btReady_Click(object sender, EventArgs e)
         {
-            PawnFactory fact = new PawnFactory();
+            HeroFactory fact = new HeroFactory();
             Pawn[] party = new Pawn[4];
             party[0] = makingHero(fact, ((HeroNode)heroQueue[0]).HeroClass, ((HeroNode)heroQueue[0]).UserNamed);
             party[1] = makingHero(fact, ((HeroNode)heroQueue[1]).HeroClass, ((HeroNode)heroQueue[1]).UserNamed); ;

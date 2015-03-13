@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HeroSelection));
             this.btReady = new System.Windows.Forms.Button();
             this.btBack = new System.Windows.Forms.Button();
             this.btHero4 = new System.Windows.Forms.Button();
@@ -111,7 +110,7 @@
             // 
             // btHero7
             // 
-            this.btHero7.Image = ((System.Drawing.Image)(resources.GetObject("btHero7.Image")));
+            this.btHero7.Image = global::TheTower.Properties.Resources.hero7;
             this.btHero7.Location = new System.Drawing.Point(540, 265);
             this.btHero7.Name = "btHero7";
             this.btHero7.Size = new System.Drawing.Size(100, 250);
@@ -172,90 +171,91 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(122, 12);
+            this.label1.Location = new System.Drawing.Point(114, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 250);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Hero 1\r\n\r\nHealth:\r\nMana:\r\nAttack:\r\nSpecial:\r\n";
+            this.label1.Text = "Warrior\r\n\r\nHealth: 25\r\nSpeed: 10\r\nPower: 10\r\nAttack: Splash\r\nSpecial: Heal";
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(384, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 250);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Hero 2\r\n\r\nHealth:\r\nMana:\r\nAttack:\r\nSpecial:\r\n";
+            this.label2.Text = "Vampire\r\n\r\nHealth: 30\r\nSpeed: 11\r\nPower: 10\r\nAttack: Splash\r\nSpecial: Bite";
             // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(646, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(150, 250);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Hero 3\r\n\r\nHealth:\r\nMana:\r\nAttack:\r\nSpecial:\r\n";
+            this.label3.Text = "Miss World\r\n\r\nHealth: 10\r\nSpeed: 5\r\nPower: 15\r\nAttack: Smile\r\nSpecial: Cheer";
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(908, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 250);
+            this.label4.Size = new System.Drawing.Size(128, 250);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Hero 4\r\n\r\nHealth:\r\nMana:\r\nAttack:\r\nSpecial:\r\n";
+            this.label4.Text = "Wizzard\r\n\r\nHealth: 15\r\nSpeed: 10\r\nPower: 10\r\nAttack: Stick\r\nSpecial: Heal";
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(908, 265);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 250);
+            this.label5.Size = new System.Drawing.Size(128, 250);
             this.label5.TabIndex = 18;
-            this.label5.Text = "Hero 8\r\n\r\nHealth:\r\nMana:\r\nAttack:\r\nSpecial:\r\n";
+            this.label5.Text = "Paladin\r\n\r\nHealth: 30\r\nSpeed: 5\r\nPower: 10\r\nAttack: Splash\r\nSpecial: Heal";
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label6.Location = new System.Drawing.Point(646, 265);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(150, 250);
             this.label6.TabIndex = 17;
-            this.label6.Text = "Hero 7\r\n\r\nHealth:\r\nMana:\r\nAttack:\r\nSpecial:\r\n";
+            this.label6.Text = "Ninja\r\n\r\nHealth: 15\r\nSpeed: 15\r\nPower: 8\r\nAttack: Splash\r\nSpecial: Sneak";
             // 
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Location = new System.Drawing.Point(384, 265);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(150, 250);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Hero 6\r\n\r\nHealth:\r\nMana:\r\nAttack:\r\nSpecial:\r\n";
+            this.label7.Text = "Shaolin Monk\r\n\r\nHealth: 23\r\nSpeed: 13\r\nPower: 9\r\nAttack: Splash\r\nSpecial: Sacrifi" +
+    "ce";
             // 
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(118, 268);
+            this.label8.Location = new System.Drawing.Point(114, 268);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(150, 250);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Hero 5\r\n\r\nHealth:\r\nMana:\r\nAttack:\r\nSpecial:\r\n";
+            this.label8.Text = "Elf\r\n\r\nHealth: 15\r\nSpeed: 8\r\nPower: 10\r\nAttack: Chop\r\nSpecial: Bow";
             // 
             // pbHero1
             // 
@@ -294,7 +294,7 @@
             this.tbHero1.Location = new System.Drawing.Point(12, 603);
             this.tbHero1.Name = "tbHero1";
             this.tbHero1.Size = new System.Drawing.Size(100, 20);
-            this.tbHero1.TabIndex = 9;
+            this.tbHero1.TabIndex = 1;
             this.tbHero1.TextChanged += new System.EventHandler(this.tbHero1_TextChanged);
             // 
             // tbHero3
@@ -302,7 +302,7 @@
             this.tbHero3.Location = new System.Drawing.Point(540, 603);
             this.tbHero3.Name = "tbHero3";
             this.tbHero3.Size = new System.Drawing.Size(100, 20);
-            this.tbHero3.TabIndex = 11;
+            this.tbHero3.TabIndex = 3;
             this.tbHero3.TextChanged += new System.EventHandler(this.tbHero3_TextChanged);
             // 
             // tbHero4
@@ -310,7 +310,7 @@
             this.tbHero4.Location = new System.Drawing.Point(802, 603);
             this.tbHero4.Name = "tbHero4";
             this.tbHero4.Size = new System.Drawing.Size(100, 20);
-            this.tbHero4.TabIndex = 12;
+            this.tbHero4.TabIndex = 4;
             this.tbHero4.TextChanged += new System.EventHandler(this.tbHero4_TextChanged);
             // 
             // tbHero2
@@ -318,7 +318,7 @@
             this.tbHero2.Location = new System.Drawing.Point(278, 603);
             this.tbHero2.Name = "tbHero2";
             this.tbHero2.Size = new System.Drawing.Size(100, 20);
-            this.tbHero2.TabIndex = 10;
+            this.tbHero2.TabIndex = 2;
             this.tbHero2.TextChanged += new System.EventHandler(this.tbHero2_TextChanged);
             // 
             // HeroSelection
@@ -326,7 +326,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::TheTower.Properties.Resources.woodtile;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1039, 729);
             this.Controls.Add(this.tbHero2);
             this.Controls.Add(this.tbHero4);
             this.Controls.Add(this.tbHero3);

@@ -21,31 +21,30 @@ namespace TheTower
     // ALSO ADD IN A COMPLETE WALL AND FLOOR CLASS FOR USE IN TESTING
     public abstract class Actor : Drawable
     {
+        #region Member Variables and Ctor
         public string Name { get; private set; }
-        protected int ID;
         protected Image Img;
         protected List<string> Tags;
         protected Tile CurTile;
+        protected int ID;
 
-        public Actor(string name, int id)
+        public Actor(string name, int ID)
         {
-            this.ID = id;
+            this.ID = ID;
             this.Name = name;
             this.CurTile = null;
             this.Tags = new List<string>();
             this.Tags.Add("Drawable");
             this.Img = null;
         }
+        #endregion
 
-        public int GetId()
-        {
-            return this.ID;
-        }
-        public virtual void Draw(PaintEventArgs e, int x, int y)
-        {
-            if(this.Img!=null)
-                e.Graphics.DrawImage(this.Img, x, y, this.Img.Width, this.Img.Height);
-        }
+        #region Overriden Object Methods
+
+        /**
+         *  Gets a shallow copy of the actor(same image data)
+         * */
+        public abstract Actor clone();
         public override bool Equals(object obj)
         {
             if (obj is Actor)
@@ -60,26 +59,25 @@ namespace TheTower
         {
             return this.Name;
         }
+        #endregion
+
+        #region Getters
         public void AddTag(string tag)
         {
             this.Tags.Add(tag);
-        }
-        public Tile GetTile()
-        {
-            return this.CurTile;
         }
         public void SetTile(Tile t)
         {
             this.CurTile = t;
         }
+        public Tile GetTile()
+        {
+            return this.CurTile;
+        }
         public List<string> GetTags()
         {
             return this.Tags;
         }
-
-        /**
-         *  Checks if ana actor has a specific tag
-         * */
         public bool hasTag(String s)
         {
             bool ret = false;
@@ -90,7 +88,17 @@ namespace TheTower
             }
             return ret;
         }
+        /**
+         * Gets the image for the actor
+         * @author Jakob Wilson
+         * */
+        public Image getImage()
+        {
+            return this.Img;
+        }
+#endregion
 
+        #region Setters
         /**
          * Sets the image for the actor
          * @author Jakob Wilson
@@ -100,19 +108,15 @@ namespace TheTower
             this.Img = img;
         }
 
-        /**
-         * Gets the image for the actor
-         * @author Jakob Wilson
-         * */
-        public Image getImage()
-        {
-            return this.Img;
-        }
+        #endregion
 
-        /**
-         *  Gets a shallow copy of the actor(same image data)
-         * */
-        public abstract Actor clone();
+        #region Draw
+        public virtual void Draw(PaintEventArgs e, int x, int y)
+        {
+            if (this.Img != null)
+                e.Graphics.DrawImage(this.Img, x, y, this.Img.Width, this.Img.Height);
+        }
+        #endregion
     }
 }
 
