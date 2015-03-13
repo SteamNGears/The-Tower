@@ -12,13 +12,13 @@ namespace TheTower
         #region Member Variables, Ctor, and Getters/Setters
         private Pawn CurPawn;
         private Queue<Pawn> TurnQueue;
-        private bool turnDone;
+        //private bool turnDone;
 
         public TurnManager()
         {
             this.TurnQueue = new Queue<Pawn>();
             this.CurPawn = null;
-            this.turnDone = true;
+           // this.turnDone = true;
         }
         public void AddPawn(Pawn p)
         {
@@ -76,10 +76,10 @@ namespace TheTower
         #region Turn Logic
         public int NextTurn()
         {
-            if(this.turnDone==false)
+           /*f(this.turnDone==false)
             {
                 return 0;
-            }
+            }*/
             if(!CleanQueue())
             {
                 Console.WriteLine("Level Over");
@@ -100,7 +100,7 @@ namespace TheTower
                     this.CurPawn = TurnQueue.Dequeue();
                 }
             }
-            this.turnDone = false;
+            //this.turnDone = false;
             return 0;
         }
         #endregion
@@ -112,7 +112,9 @@ namespace TheTower
             {
                 CurPawn.UseSpecial(tile);
                 if (!CurPawn.CanAct())
-                    turnDone = true;
+                {
+                    this.NextTurn();
+                }
             }
             else
             {
@@ -125,7 +127,9 @@ namespace TheTower
             {
                 CurPawn.UseAttack(tile);
                 if (!CurPawn.CanAct())
-                    turnDone = true;
+                {
+                    this.NextTurn();
+                }
             }
             else
             {
@@ -138,7 +142,9 @@ namespace TheTower
             {
                 CurPawn.MoveTo(tile);
                 if (!CurPawn.CanAct())
-                    turnDone = true;
+                {
+                    this.NextTurn();
+                }
             }
             else
             {

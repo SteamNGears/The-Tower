@@ -103,7 +103,7 @@ namespace TheTower
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 if (this.selectedTile != null)
-                    this.selectedTile.RemoveActor(this.selectionMenu);//<-----------This line does not remove the actor correctly for some reason
+                    this.selectedTile.RemoveActor(this.selectionMenu);
                 
                 this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
                 Options options = this.Turns.getOptions(this.selectedTile);
@@ -119,9 +119,11 @@ namespace TheTower
             else if (((MouseEventArgs)e).Button == MouseButtons.Left)
             {
                 int sel;
-                if(this.selectionMenu != null)
+                if (this.selectionMenu != null)
+                {
                     sel = this.selectionMenu.click((MouseEventArgs)e);
-                else 
+                }
+                else
                     sel = 0;
                 switch (sel)
                 {
@@ -133,6 +135,8 @@ namespace TheTower
                     case 3: this.Turns.DoSpecial(this.selectedTile);
                         break;
                 }
+                if (this.selectedTile != null)
+                    this.selectedTile.RemoveActor(this.selectionMenu);
                 //this.selectedTile = null;
             }
             this.Refresh();
