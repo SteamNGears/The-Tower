@@ -84,6 +84,7 @@ namespace TheTower
                     while(CurPawn.CanAct())
                     {
                         AITurn.ExecuteTurn();
+                        //this.Level.Paint();
                     }
                     if (!CurPawn.Dead)
                         this.TurnQueue.Enqueue(CurPawn);
@@ -103,7 +104,7 @@ namespace TheTower
             }
             else
             {
-                Console.WriteLine("Cannot Attack Here!");
+                Console.WriteLine("Cannot Special Here!");
             }
         }
         public void DoAttack(Tile tile)

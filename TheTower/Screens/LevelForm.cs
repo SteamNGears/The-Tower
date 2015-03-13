@@ -20,6 +20,7 @@ namespace TheTower
         private Grid Gui;           //The gui grid(player cards)
         private PawnFactory fact;
         private Tile selectedTile;
+        private TileSelect selectionMenu;
         private TurnManager Turns;
 
 
@@ -95,32 +96,47 @@ namespace TheTower
 
 
         /**
-         * 
+         * Handles clicking on the form. 
+         * On right click, it generates a menu of movement/attack options
+         * On left click, it performs the appropriate action selection for that tile
          * */
         private void LevelForm_Click(object sender, EventArgs e)
-        {
-            this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
-            MessageBox.Show("Got tile:" + this.selectedTile.x + ", " + this.selectedTile.y);
+        {   
             
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 if (this.selectedTile != null)
+                    this.selectedTile.RemoveActor(this.selectionMenu);//<-----------This line does not remove the actor correctly for some reason
+                
+                this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+                Options options = this.Turns.getOptions(this.selectedTile);
+                
+                if (options != null)
                 {
-                    Options options = this.Turns.getOptions(this.selectedTile);
-                    if (options != null)
-                    {
-                        Console.WriteLine("move: " + options.canMove + " attack: " + options.canAttack + " special: " + options.canSpecial);
-                        Actor a = new TileSelect(options);
-                        this.selectedTile.AddActor(a);
-                    }
-                    else
-                        Console.WriteLine("no current pawn");
+                    this.selectionMenu = new TileSelect(options);
+                    this.selectedTile.AddActor(this.selectionMenu);
                 }
+                else
+                    Console.WriteLine("no current pawn");
             }
-            else
+            else if (((MouseEventArgs)e).Button == MouseButtons.Left)
             {
-                Actor a = new TileSelect(new Options(true, true, true));
-                this.selectedTile.AddActor(a);
+                int sel;
+                if(this.selectionMenu != null)
+                    sel = this.selectionMenu.click((MouseEventArgs)e);
+                else 
+                    sel = 0;
+                switch (sel)
+                {
+
+                    case 1: this.Turns.DoAttack(this.selectedTile);
+                        break;
+                    case 2: this.Turns.DoMove(this.selectedTile);
+                        break;
+                    case 3: this.Turns.DoSpecial(this.selectedTile);
+                        break;
+                }
+                //this.selectedTile = null;
             }
             this.Refresh();
         }

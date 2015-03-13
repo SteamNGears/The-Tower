@@ -56,10 +56,11 @@ namespace TheTower
             }
             catch { return false; }
         }
-        public void RemoveActor(Actor o)
+        public bool RemoveActor(Actor o)
         {
-            this.Actors.Remove(o);
+            return this.Actors.Remove(o);
         }
+
         public void AddActor(Actor o)
         {
             //MessageBox.Show("Assign actor: " + o.Name);
