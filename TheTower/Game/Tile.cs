@@ -56,6 +56,7 @@ namespace TheTower
             }
             catch { return false; }
         }
+        
         public bool RemoveActor(Actor o)
         {
             return this.Actors.Remove(o);
