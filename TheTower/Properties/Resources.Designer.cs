@@ -63,6 +63,16 @@ namespace TheTower.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bomb64 {
+            get {
+                object obj = ResourceManager.GetObject("bomb64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap castle {
             get {
                 object obj = ResourceManager.GetObject("castle", resourceCulture);
@@ -263,9 +273,39 @@ namespace TheTower.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap skeleton64 {
+            get {
+                object obj = ResourceManager.GetObject("skeleton64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vampire64 {
+            get {
+                object obj = ResourceManager.GetObject("vampire64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap woodtile {
             get {
                 object obj = ResourceManager.GetObject("woodtile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wraith64 {
+            get {
+                object obj = ResourceManager.GetObject("wraith64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

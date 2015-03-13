@@ -18,7 +18,6 @@ namespace TheTower
         private Pawn[] Party;
         private Grid Level;         //the level grid
         private Grid Gui;           //The gui grid(player cards)
-        private PawnFactory fact;
         private Tile selectedTile;
         private TileSelect selectionMenu;
         private TurnManager Turns;
@@ -42,7 +41,7 @@ namespace TheTower
 
         
             //create the level using the map factory
-            this.Level = MapFactory.CreateMap("Level1.tmx");
+            this.Level = MapFactory.CreateMap("LucasLvl1.tmx");
             this.Level.setPosition(0, 96);
             
             this.Gui = new Grid();
@@ -51,14 +50,12 @@ namespace TheTower
             this.Gui.setTileWidth(256);
             this.Gui.setPosition(0, 640);
 
-            this.fact = new PawnFactory();
-
             this.Turns = new TurnManager();
             foreach (Pawn a in pParty)
             {
                 this.Turns.AddPawn(a);
             }
-            this.Turns.AddPawn(fact.MakeBomb("Derpo"));
+            this.Turns.AddPawn(new Bomb("burb", TheTower.Properties.Resources.bomb64));
             this.selectedTile = null;
 
             if (this.Turns.NextTurn() == 1)

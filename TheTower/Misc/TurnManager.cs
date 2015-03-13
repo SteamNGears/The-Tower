@@ -9,18 +9,30 @@ namespace TheTower
 {
     public class TurnManager
     {
+        #region Member Variables, Ctor, and Getters/Setters
         private Pawn CurPawn;
-        private AIController AITurn;
         private Queue<Pawn> TurnQueue;
         private bool turnDone;
 
         public TurnManager()
         {
             this.TurnQueue = new Queue<Pawn>();
-            this.AITurn = new AIController();
             this.CurPawn = null;
             this.turnDone = true;
         }
+        public void AddPawn(Pawn p)
+        {
+            if (!p.Dead)
+                this.TurnQueue.Enqueue(p);
+
+        }
+        #endregion
+        
+        #region Helper Methods
+        /**
+         * Lucas Salom
+         * Returns Current Active Pawn's ability to act on specified tile.
+         */
         public Options getOptions(Tile tile)
         {
             if (CurPawn != null)
@@ -37,15 +49,6 @@ namespace TheTower
                 return new Options(move, atk, spec);
             }
             return null;
-        }
-        public bool isFinished()
-        {
-            return this.TurnQueue.Count == 0;
-        }
-        public void AddPawn(Pawn p)
-        {
-            if(!p.Dead)
-                this.TurnQueue.Enqueue(p);
         }
         private bool CleanQueue()
         {
@@ -64,6 +67,13 @@ namespace TheTower
             }
             return hasCreatures;
         }
+        public bool isFinished()
+        {
+            return this.TurnQueue.Count == 0;
+        }
+        #endregion
+
+        #region Turn Logic
         public int NextTurn()
         {
             if(this.turnDone==false)
@@ -80,11 +90,10 @@ namespace TheTower
                 this.CurPawn = TurnQueue.Dequeue();
                 while(CurPawn.GetTags().Contains("Creature"))
                 {
-                    AITurn.SetPawn(CurPawn);
-                    while(CurPawn.CanAct())
+                    Creature AIPawn = (Creature)CurPawn;
+                    while(AIPawn.CanAct())
                     {
-                        AITurn.ExecuteTurn();
-                        //this.Level.Paint();
+                        AIPawn.GetController().ExecuteTurn();
                     }
                     if (!CurPawn.Dead)
                         this.TurnQueue.Enqueue(CurPawn);
@@ -94,6 +103,9 @@ namespace TheTower
             this.turnDone = false;
             return 0;
         }
+        #endregion
+
+        #region Actions
         public void DoSpecial(Tile tile)
         {
             if (CurPawn.GetSpecialRange().Contains(tile))
@@ -104,7 +116,7 @@ namespace TheTower
             }
             else
             {
-                Console.WriteLine("Cannot Special Here!");
+                Console.WriteLine("Cannot Attack Here!");
             }
         }
         public void DoAttack(Tile tile)
@@ -133,5 +145,6 @@ namespace TheTower
                 Console.WriteLine("Cannot Move Here!");
             }
         }
+        #endregion
     }
 }

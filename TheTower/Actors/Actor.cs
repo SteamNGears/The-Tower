@@ -48,9 +48,10 @@ namespace TheTower
         }
         public override bool Equals(object obj)
         {
-            if (obj is Actor)
+            return obj == this;
+            /*if (obj is Actor)
                 return this.ID == ((Actor)obj).ID;
-            return false;
+            return false;*/
         }
         public override int GetHashCode()
         {
