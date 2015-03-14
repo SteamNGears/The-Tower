@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace TheTower
@@ -6,6 +7,7 @@ namespace TheTower
     public class Grid
     {
         private Tile headTile;
+        private List<Actor> actorList;
         private int row;
         private int column;
         private int tileWidth;
@@ -18,6 +20,7 @@ namespace TheTower
             this.headTile = null;
             this._offsetx = 0;
             this._offsety = 0;
+            this.actorList = new List<Actor>();
         }
 
         public void SetRow(int row)
@@ -80,8 +83,25 @@ namespace TheTower
             }
             return cur;
         }
+        public void AddActorAt(int x,int y, Actor a)
+        {
+            Tile cur = this.GetTile(x, y);
+            cur.AddActor(a);
+            this.actorList.Add(a);
+        }
 
-
+        public List<Actor> GetActorsByType(string type)
+        {
+            List<Actor> ret = new List<Actor>();
+            foreach(Actor a in this.actorList)
+            {
+                if(a.hasTag(type))
+                {
+                    ret.Add(a);
+                }
+            }
+            return ret;
+        }
         /*
          *  return the Tile base on the index
          */ 

@@ -72,7 +72,7 @@ namespace TheTower
                     try
                     {
                         if (Convert.ToInt32(tile.Attributes["gid"].Value) != 0)
-                         ret.GetTile(curx / tileWidth, cury / tileHeight).AddActor(actors[Convert.ToInt32(tile.Attributes["gid"].Value) - 1].clone());}
+                         ret.AddActorAt(curx / tileWidth, cury / tileHeight,actors[Convert.ToInt32(tile.Attributes["gid"].Value) - 1].clone());}
                     catch (NullReferenceException e)
                     { MessageBox.Show("Could add actor because " + e.ToString()); }
                     

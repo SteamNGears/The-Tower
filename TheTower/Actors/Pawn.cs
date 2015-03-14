@@ -4,7 +4,7 @@ using TheTower.Actors;
 
 namespace TheTower
 {
-    public class Pawn : Actor
+    public abstract class Pawn : Actor
     {
 
         public Pawn(string name,int ID,int ap, int health, int speed, int power)
@@ -37,10 +37,6 @@ namespace TheTower
         private MoveMode Move;
         private SpecialMode Special;
 
-		public override Actor clone()
-		{
-			return this;
-		}
         public void SetPower(int p)
         {
             this.Power = p;

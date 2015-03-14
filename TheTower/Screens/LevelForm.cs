@@ -55,10 +55,15 @@ namespace TheTower
             {
                 this.Turns.AddPawn(a);
             }
-            this.Turns.AddPawn(new Bomb("burb", TheTower.Properties.Resources.bomb64));
+
+            foreach(Actor a in this.Level.GetActorsByType("Creature"))
+            {
+                Pawn newPawn = (Pawn)a;
+                this.Turns.AddPawn(newPawn);
+            }
             this.selectedTile = null;
 
-            if (this.Turns.NextTurn() == 1)
+            if (!this.Turns.NextTurn())
                 Console.WriteLine("Level over");
 
             this.Gui.SetTile(pParty[0].getCard(), 0, 0);
@@ -128,18 +133,32 @@ namespace TheTower
                 switch (sel)
                 {
 
-                    case 1: this.Turns.DoAttack(this.selectedTile);
+                    case 1: if (!this.Turns.DoAttack(this.selectedTile))
+                            this.NextLevel();
                         break;
-                    case 2: this.Turns.DoMove(this.selectedTile);
+                    case 2: if (!this.Turns.DoMove(this.selectedTile))
+                            this.NextLevel();
                         break;
-                    case 3: this.Turns.DoSpecial(this.selectedTile);
+                    case 3: if (!this.Turns.DoSpecial(this.selectedTile))
+                            this.NextLevel();
                         break;
                 }
                 if (this.selectedTile != null)
                     this.selectedTile.RemoveActor(this.selectionMenu);
-                //this.selectedTile = null;
             }
             this.Refresh();
+        }
+
+        private void endTurn_Click(object sender, EventArgs e)
+        {
+            if (!this.Turns.doNothing())
+                this.NextLevel();
+            this.Refresh();
+        }
+        private void NextLevel()
+        {
+            Console.WriteLine("Initiating next Level");
+            //insert level switch code here
         }
     }
 }

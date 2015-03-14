@@ -31,5 +31,9 @@ namespace TheTower
             this.SetSpecial(new SpecialSneakAttack(this));
             this.SetMove(new MoveThrough(this));
         }
+        public override Actor clone()
+        {
+            return new Wraith(this.Name, this.Img);
+        }
     }
 }
