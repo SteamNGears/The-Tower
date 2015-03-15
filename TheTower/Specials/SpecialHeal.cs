@@ -32,5 +32,10 @@ namespace TheTower
         {
             return this.Owner.GetTile().GetRange(8);
         }
+
+        public override string ToString()
+        {
+            return "Heal";
+        }
     }
 }

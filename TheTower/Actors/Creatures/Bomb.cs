@@ -29,5 +29,9 @@ namespace TheTower
             this.SetMove(new MoveGround(this));
             this.SetSpecial(new SpecialExplode(this));
         }
+        public override Actor clone()
+        {
+            return new Bomb(this.Name, this.Img);
+        }
     }
 }

@@ -37,5 +37,10 @@ namespace TheTower
         {
             return this.Owner.GetTile().GetRange(15);
         }
+
+        public override string ToString()
+        {
+            return "Bow Attack";
+        }
     }
 }

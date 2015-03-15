@@ -28,5 +28,9 @@ namespace TheTower
             this.SetDefense(new DefenseMode(this));
             this.SetMove(new MoveGround(this));
         }
+        public override Actor clone()
+        {
+            return new Skeleton(this.Name, this.Img);
+        }
     }
 }

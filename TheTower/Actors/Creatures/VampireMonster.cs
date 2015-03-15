@@ -29,5 +29,9 @@ namespace TheTower
             this.SetAttack(new AttackSlash(this));
             this.SetSpecial(new SpecialVampireBite(this));
         }
+        public override Actor clone()
+        {
+            return new VampireMonster(this.Name, this.Img);
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace TheTower
             if(this.Target!=null)
                 foreach (Actor a in this.Target.GetData())
                 {
-                    if ((a as Pawn).GetTags().Contains("Hero") && !(a as Pawn).Dead)
+                    if (a.hasTag("Hero") && !(a as Pawn).Dead)
                     {
                         this.isValidTarget = true;
                     }
@@ -193,7 +193,7 @@ namespace TheTower
             {
                 foreach (Actor a in Origin.GetData())
                 {
-                    if (!(a as Pawn).Dead)
+                    if (a.hasTag("Hero") && !(a as Pawn).Dead)
                     {
                         this.Target = Origin;
                         this.isValidTarget = true;

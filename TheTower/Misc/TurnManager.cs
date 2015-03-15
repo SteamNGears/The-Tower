@@ -52,7 +52,6 @@ namespace TheTower
         }
         private bool CleanQueue()
         {
-            bool hasCreatures=false;
             int total=this.TurnQueue.Count;
             Pawn p;
             for(int i=0;i<total;i++)
@@ -60,97 +59,135 @@ namespace TheTower
                 p=this.TurnQueue.Dequeue();
                 if(!p.Dead)
                 {
-                    if(p.GetTags().Contains("Creature"))
-                        hasCreatures=true;
                     this.TurnQueue.Enqueue(p);
                 }
             }
-            return hasCreatures;
+            return isFinished();
         }
-        public bool isFinished()
+        private bool isFinished()
         {
-            return this.TurnQueue.Count == 0;
+            bool hasCreatures = false;
+            bool hasPlayers=false;
+
+            foreach(Pawn p in this.TurnQueue)
+            {
+                if (p.hasTag("Hero"))
+                    hasPlayers = true;
+                if (p.hasTag("Creature"))
+                    hasCreatures = true;
+            }
+            if(CurPawn!=null && !CurPawn.Dead)
+            {
+                if (CurPawn.hasTag("Creature"))
+                    hasCreatures = true;
+                else if (CurPawn.hasTag("Hero"))
+                    hasPlayers = true;
+            }
+            return !(hasCreatures && hasPlayers);
         }
         #endregion
 
         #region Turn Logic
-        public int NextTurn()
+        public bool NextTurn()
         {
-           /*f(this.turnDone==false)
-            {
-                return 0;
-            }*/
-            if(!CleanQueue())
+            if(CleanQueue())
             {
                 Console.WriteLine("Level Over");
-                return 1;
+                return false;
             }
             if(this.TurnQueue.Count>0)
             {
                 this.CurPawn = TurnQueue.Dequeue();
-                while(CurPawn.GetTags().Contains("Creature"))
+                this.CurPawn.isTurn = true;
+               
+                while(CurPawn.hasTag("Creature"))
                 {
-                    Creature AIPawn = (Creature)CurPawn;
+                    
+                    Creature AIPawn = (Creature)this.CurPawn;
                     while(AIPawn.CanAct())
                     {
                         AIPawn.GetController().ExecuteTurn();
                     }
                     if (!CurPawn.Dead)
+                    {
+                        this.CurPawn.ResetAP();
                         this.TurnQueue.Enqueue(CurPawn);
+                    }
+                    if (CleanQueue())
+                    {
+                        Console.WriteLine("Level Over");
+                        return false;
+                    }
+                    this.CurPawn.isTurn = false;
                     this.CurPawn = TurnQueue.Dequeue();
+                    this.CurPawn.isTurn = true;
                 }
+
             }
-            //this.turnDone = false;
-            return 0;
+            return true;
         }
         #endregion
 
         #region Actions
-        public void DoSpecial(Tile tile)
+        public bool DoSpecial(Tile tile)
         {
             if (CurPawn.GetSpecialRange().Contains(tile))
             {
                 CurPawn.UseSpecial(tile);
                 if (!CurPawn.CanAct())
                 {
-                    this.NextTurn();
+                    return this.endTurn();
                 }
             }
             else
             {
                 Console.WriteLine("Cannot Attack Here!");
             }
+            return this.isFinished();
         }
-        public void DoAttack(Tile tile)
+        public bool DoAttack(Tile tile)
         {
             if (CurPawn.GetAttackRange().Contains(tile))
             {
                 CurPawn.UseAttack(tile);
                 if (!CurPawn.CanAct())
                 {
-                    this.NextTurn();
+                    return this.endTurn();
                 }
             }
             else
             {
                 Console.WriteLine("Cannot Attack Here!");
             }
+            return this.isFinished();
         }
-        public void DoMove(Tile tile)
+        public bool DoMove(Tile tile)
         {
             if (CurPawn.GetMoveRange().Contains(tile))
             {
                 CurPawn.MoveTo(tile);
                 if (!CurPawn.CanAct())
                 {
-                    this.NextTurn();
+                    return this.endTurn();
                 }
             }
             else
             {
                 Console.WriteLine("Cannot Move Here!");
             }
+            return this.isFinished();
+        }
+        public bool doNothing()
+        {
+            return this.endTurn();
         }
         #endregion
+        private bool endTurn()
+        {
+            this.CurPawn.isTurn = false;
+            this.CurPawn.ResetAP();
+            this.TurnQueue.Enqueue(CurPawn);
+            return this.NextTurn();
+        }
     }
 }

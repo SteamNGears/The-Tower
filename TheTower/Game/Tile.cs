@@ -418,14 +418,22 @@ namespace TheTower
 
         public void ApplyDamage(Attack atk)
         {
+            List<Actor> toRemove = new List<Actor>();
             foreach(Actor a in Actors)
             {
-                if(a.GetTags().Contains("Pawn"))
+                if(a.hasTag("Pawn"))
                 {
                     Pawn target = (Pawn)a;
                     target.TakeDamage(atk);
+                    if (target.Dead)
+                        toRemove.Add(target);
                 }
             }
+            foreach(Actor a in toRemove)
+            {
+                this.Actors.Remove(a);
+            }
+            
         }
 
 

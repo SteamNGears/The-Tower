@@ -38,5 +38,10 @@ namespace TheTower
         {
             return this.Owner.GetTile().GetRange(5);
         }
+
+        public override string ToString()
+        {
+            return "Special Sacrifice";
+        }
     }
 }

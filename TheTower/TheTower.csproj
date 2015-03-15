@@ -89,12 +89,6 @@
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Actors\GoldHighlight.cs" />
-    <Compile Include="Screens\GridTestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Screens\GridTestForm.Designer.cs">
-      <DependentUpon>GridTestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Misc\HeroNode.cs" />
     <Compile Include="Screens\HeroSelection.cs">
       <SubType>Form</SubType>
@@ -137,7 +131,6 @@
     <Compile Include="Movement\MoveMode.cs" />
     <Compile Include="Game\Tile.cs" />
     <Compile Include="Actors\Pawn.cs" />
-    <Compile Include="Misc\PawnFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Misc\TileComposite.cs" />
@@ -150,9 +143,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Screens\GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Screens\GridTestForm.resx">
-      <DependentUpon>GridTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\HeroSelection.resx">
       <DependentUpon>HeroSelection.cs</DependentUpon>
