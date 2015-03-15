@@ -100,6 +100,8 @@ namespace TheTower
                 this.CurPawn = TurnQueue.Dequeue();
                 while(CurPawn.hasTag("Creature"))
                 {
+                    this.CurPawn.isTurn = true;
+                    
                     Creature AIPawn = (Creature)this.CurPawn;
                     while(AIPawn.CanAct())
                     {
@@ -115,8 +117,12 @@ namespace TheTower
                         Console.WriteLine("Level Over");
                         return false;
                     }
+
+                    this.CurPawn.isTurn = false;
                     this.CurPawn = TurnQueue.Dequeue();
+                    this.CurPawn.isTurn = true;
                 }
+
             }
             return true;
         }
@@ -178,7 +184,7 @@ namespace TheTower
         #endregion
         private bool endTurn()
         {
-
+            this.CurPawn.isTurn = false;
             this.CurPawn.ResetAP();
             this.TurnQueue.Enqueue(CurPawn);
             return this.NextTurn();

@@ -117,7 +117,8 @@ namespace TheTower
                     cur = cur.right;
             }
             else
-                throw new IndexOutOfRangeException("You have walked off the grid with" + rowIndex + ", " + columnIndex);
+                return null;//throw new IndexOutOfRangeException("You have walked off the grid with" + rowIndex + ", " + columnIndex);
+
             return cur;
         }
 

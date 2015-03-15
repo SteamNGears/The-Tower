@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             this.Lbl_Turn = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+=======
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelForm));
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+>>>>>>> Jakes_Branch
             this.SuspendLayout();
             // 
-            // Lbl_Turn
+            // pictureBox1
             // 
-            this.Lbl_Turn.AutoEllipsis = true;
-            this.Lbl_Turn.AutoSize = true;
-            this.Lbl_Turn.BackColor = System.Drawing.Color.Transparent;
-            this.Lbl_Turn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Turn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Lbl_Turn.Location = new System.Drawing.Point(402, 9);
-            this.Lbl_Turn.Name = "Lbl_Turn";
-            this.Lbl_Turn.Size = new System.Drawing.Size(168, 31);
-            this.Lbl_Turn.TabIndex = 1;
-            this.Lbl_Turn.Text = "Current Turn";
-            this.Lbl_Turn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(426, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(175, 71);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.endTurn_Click);
             // 
             // button1
             // 
@@ -61,20 +64,29 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 770);
+<<<<<<< HEAD
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Lbl_Turn);
+=======
+            this.Controls.Add(this.pictureBox1);
+>>>>>>> Jakes_Branch
             this.Name = "LevelForm";
             this.Text = "LevelForm";
             this.Click += new System.EventHandler(this.LevelForm_Click);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.LevelForm_Paint);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+<<<<<<< HEAD
         private System.Windows.Forms.Label Lbl_Turn;
         private System.Windows.Forms.Button button1;
+=======
+        private System.Windows.Forms.PictureBox pictureBox1;
+
+>>>>>>> Jakes_Branch
     }
 }

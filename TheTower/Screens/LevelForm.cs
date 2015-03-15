@@ -17,13 +17,15 @@ namespace TheTower
         //private Panel[,] SelectGrid;
         private Pawn[] Party;
         private Grid Level;         //the level grid
+        private Grid Overlay;       //a grid that lays over the leel grid for selection elements so they don't get drawn over by walls
         private Grid Gui;           //The gui grid(player cards)
         private Tile selectedTile;
+        private Tile selectedGuiTile;
         private TileSelect selectionMenu;
         private TurnManager Turns;
 
 
-
+        //test
         //temporary
         Image highlight = Image.FromFile("bitmap/HighlightViolet.png");
         public LevelForm(Pawn[] pParty)//Add xml filename
@@ -43,7 +45,13 @@ namespace TheTower
             //create the level using the map factory
             this.Level = MapFactory.CreateMap("LucasLvl1.tmx");
             this.Level.setPosition(0, 96);
-            
+
+            this.Overlay = new Grid();
+            this.Overlay.SetGrid(this.Level.GetRow(), this.Level.GetColumn());
+            this.Overlay.setTileWidth(this.Level.getTileWidth());
+            this.Overlay.setTileHeight(this.Level.getTileHeight());
+            this.Overlay.setPosition(0, 96);
+
             this.Gui = new Grid();
             this.Gui.SetGrid(4, 1);
             this.Gui.setTileHeight(128);
@@ -94,6 +102,7 @@ namespace TheTower
         {
             this.Level.render(e);
             this.Gui.render(e);
+            this.Overlay.render(e);
         }
 
 
@@ -108,15 +117,19 @@ namespace TheTower
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 if (this.selectedTile != null)
-                    this.selectedTile.RemoveActor(this.selectionMenu);
+                    this.selectedGuiTile.RemoveActor(this.selectionMenu);
                 
                 this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+                this.selectedGuiTile = Overlay.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+
+                if (this.selectedTile == null)
+                    return;
                 Options options = this.Turns.getOptions(this.selectedTile);
                 
                 if (options != null)
                 {
                     this.selectionMenu = new TileSelect(options);
-                    this.selectedTile.AddActor(this.selectionMenu);
+                    this.selectedGuiTile.AddActor(this.selectionMenu);
                 }
                 else
                     Console.WriteLine("no current pawn");

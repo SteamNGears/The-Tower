@@ -31,5 +31,10 @@ namespace TheTower
         {
             return this.Owner.GetTile().GetRange(10);
         }
+
+        public override string ToString()
+        {
+            return "Rock Throwing";
+        }
     }
 }
