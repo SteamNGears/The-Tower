@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TheTower.Actors
+namespace TheTower
 {
     /*
      * A class to represent a player's gui card so it can be drawn in a grid

@@ -21,6 +21,7 @@ namespace TheTower
             this.Attack = null;
             this.MaxAP = this.AP;
             this.AddTag("Pawn");
+            this.isTurn = false;
         }
         public int AP { get; private set; }
         public int MaxAP { get; private set; }
@@ -29,6 +30,7 @@ namespace TheTower
 	    public int Speed{ get; private set; }
         public int Power { get; private set; }
         public bool Dead { get; private set;}
+        public bool isTurn;
 
         protected DefenseMode Defense;
         protected AttackMode Attack;
