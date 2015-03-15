@@ -1,15 +1,13 @@
-﻿
 using System.Collections.Generic;
 
 namespace TheTower
 {
-    public class AttackFreeze : AttackMode
+    public class AttackChop : AttackMode
     {
-        public AttackFreeze(Pawn owner)
-            : base(owner)
+        public AttackChop(Pawn owner) : base(owner)
         {
             typeList = new List<string>();
-            typeList.Add("Ice");
+            typeList.Add("Chop");
             this.Cost = 5;
         }
         public override int ModDamage()
@@ -22,7 +20,7 @@ namespace TheTower
         }
         public override TileComposite GetAttackRange()
         {
-            return this.Owner.GetTile().GetRange(6);
+            return this.Owner.GetTile().GetRange(2);
         }
     }
 }

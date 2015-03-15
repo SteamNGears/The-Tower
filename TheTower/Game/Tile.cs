@@ -34,7 +34,7 @@ namespace TheTower
         {
             foreach (Actor a in Actors)
             {
-                if (a.GetTags().Contains(Type))
+                if (a.hasTag(Type))
                     return true;
             }
             return false;
@@ -411,7 +411,7 @@ namespace TheTower
         public bool HasCollidable()
         {
             foreach (Actor o in Actors)
-                if (o.GetTags().Contains("Collidable"))
+                if (o.hasTag("Collidable"))
                     return true;
             return false;
         }

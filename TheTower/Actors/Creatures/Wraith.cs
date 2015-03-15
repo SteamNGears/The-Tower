@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace TheTower
 {
@@ -34,6 +29,15 @@ namespace TheTower
         public override Actor clone()
         {
             return new Wraith(this.Name, this.Img);
+        }
+
+        //Determines whether or not to do Special Attack or Regular attack
+        //
+        public override bool CalculateSpecial()
+        {
+            if (this.MaxAP==this.AP)
+                return true;
+            return false;
         }
     }
 }

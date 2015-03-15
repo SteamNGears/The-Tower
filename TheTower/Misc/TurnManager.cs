@@ -1,9 +1,6 @@
 ﻿using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace TheTower
 {
@@ -88,21 +85,20 @@ namespace TheTower
         #endregion
 
         #region Turn Logic
+        //
+        //Lucas Salom
+        //Manages the selection of the current player / if its is a Creature, turn execution is automated
         public bool NextTurn()
         {
             if(CleanQueue())
             {
-                Console.WriteLine("Level Over");
-                return false;
+                return true;
             }
             if(this.TurnQueue.Count>0)
             {
                 this.CurPawn = TurnQueue.Dequeue();
-                this.CurPawn.isTurn = true;
-               
                 while(CurPawn.hasTag("Creature"))
                 {
-                    
                     Creature AIPawn = (Creature)this.CurPawn;
                     while(AIPawn.CanAct())
                     {
@@ -115,65 +111,41 @@ namespace TheTower
                     }
                     if (CleanQueue())
                     {
-                        Console.WriteLine("Level Over");
-                        return false;
+                        return true;
                     }
-                    this.CurPawn.isTurn = false;
                     this.CurPawn = TurnQueue.Dequeue();
-                    this.CurPawn.isTurn = true;
                 }
-
             }
-            return true;
+            return false;
         }
         #endregion
 
         #region Actions
         public bool DoSpecial(Tile tile)
         {
-            if (CurPawn.GetSpecialRange().Contains(tile))
+            CurPawn.UseSpecial(tile);
+            if (!CurPawn.CanAct() || this.CleanQueue())
             {
-                CurPawn.UseSpecial(tile);
-                if (!CurPawn.CanAct())
-                {
-                    return this.endTurn();
-                }
-            }
-            else
-            {
-                Console.WriteLine("Cannot Attack Here!");
+                return this.endTurn();
             }
             return this.isFinished();
         }
         public bool DoAttack(Tile tile)
         {
-            if (CurPawn.GetAttackRange().Contains(tile))
+            CurPawn.UseAttack(tile);
+            if (!CurPawn.CanAct() || this.CleanQueue())
             {
-                CurPawn.UseAttack(tile);
-                if (!CurPawn.CanAct())
-                {
-                    return this.endTurn();
-                }
-            }
-            else
-            {
-                Console.WriteLine("Cannot Attack Here!");
+                return this.endTurn();
             }
             return this.isFinished();
         }
         public bool DoMove(Tile tile)
         {
-            if (CurPawn.GetMoveRange().Contains(tile))
+            
+            CurPawn.MoveTo(tile);
+            if (!CurPawn.CanAct() || this.CleanQueue())
             {
-                CurPawn.MoveTo(tile);
-                if (!CurPawn.CanAct())
-                {
-                    return this.endTurn();
-                }
-            }
-            else
-            {
-                Console.WriteLine("Cannot Move Here!");
+                return this.endTurn();
             }
             return this.isFinished();
         }
@@ -184,7 +156,7 @@ namespace TheTower
         #endregion
         private bool endTurn()
         {
-            this.CurPawn.isTurn = false;
+
             this.CurPawn.ResetAP();
             this.TurnQueue.Enqueue(CurPawn);
             return this.NextTurn();

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml;
 
 namespace TheTower
@@ -16,7 +12,7 @@ namespace TheTower
     class ActorFactory
     {
         public delegate Actor actorMethod(XmlNode data);                                                        /** A delegate type for creating actors from xml data */
-        private static Dictionary<String, actorMethod> actorMethods = new Dictionary<string,actorMethod>();     /**A map of delegates to hold all of the actor methods
+        private static Dictionary<string, actorMethod> actorMethods = new Dictionary<string,actorMethod>();     /**A map of delegates to hold all of the actor methods
 
         /**
          * Calls the appropriate delegate to create the actor. If no delegate can be found, throws an exception

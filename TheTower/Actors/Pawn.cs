@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using TheTower.Actors;
-
+﻿using System.Collections.Generic;
+using System;
 namespace TheTower
 {
     public abstract class Pawn : Actor
@@ -23,7 +20,7 @@ namespace TheTower
             this.Defense = null;
             this.Attack = null;
             this.MaxAP = this.AP;
-            this.isTurn = false;
+            this.AddTag("Pawn");
         }
         public int AP { get; private set; }
         public int MaxAP { get; private set; }
@@ -32,12 +29,11 @@ namespace TheTower
 	    public int Speed{ get; private set; }
         public int Power { get; private set; }
         public bool Dead { get; private set;}
-        public bool isTurn;
 
-        private DefenseMode Defense;
-        private AttackMode Attack;
-        private MoveMode Move;
-        private SpecialMode Special;
+        protected DefenseMode Defense;
+        protected AttackMode Attack;
+        protected MoveMode Move;
+        protected SpecialMode Special;
 
         public void SetPower(int p)
         {
@@ -72,6 +68,7 @@ namespace TheTower
         public void SetHealth(int hp)
         {
             this.Health = hp;
+            this.Dead = false;
             if (this.Health > this.MaxHealth)
                 this.Health = this.MaxHealth;
             else if (this.Health < 0)
@@ -174,18 +171,5 @@ namespace TheTower
             return new PlayerCard(this);
         }
 
-
-        public override string ToString()
-        {
-            String ret = "";
-            ret += ("Name: " + this.Name + "\n");
-            ret += ("Health: " + this.Health + "/" + this.MaxHealth + "\n");
-            ret += ("Action Points: " + this.AP + "/" + this.MaxAP + "\n");
-            ret += ("Power: " + this.Power + "\n");
-            ret += ("Speed: " + this.Speed + "\n");
-            ret += ("Special: " + this.Special.ToString() + "\n");
-            return ret;
-
-        }
     }
 }

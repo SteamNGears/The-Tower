@@ -1,8 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TheTower
 {
@@ -19,14 +16,15 @@ namespace TheTower
         {
             typeList = new List<string>();
             typeList.Add("Bow");
-            this.Cost = 10;
+            this.Cost = 7;
         }
         public override void Special(Tile target)
         {
             if (this.GetSpecialRange().Contains(target) && this.Cost <= this.Owner.AP)
             {
                 Attack atk = new Attack(this.Owner.GetPower()/3, this.typeList);
-                this.GetAoeRange(target).ApplyDamage(atk);         
+                this.GetAoeRange(target).ApplyDamage(atk);
+                this.Owner.RemoveAP(this.Cost);
             }
         }
         public override TileComposite GetAoeRange(Tile tile)
