@@ -16,5 +16,9 @@ namespace TheTower
         {
             this.AddTag("Hero");
         }
+        public override Actor clone()
+        {
+            return this;
+        }
     }
 }
