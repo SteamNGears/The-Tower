@@ -25,7 +25,7 @@ namespace TheTower
         private TurnManager Turns;
 
 
-
+        //test
         //temporary
         Image highlight = Image.FromFile("bitmap/HighlightViolet.png");
         public LevelForm(Pawn[] pParty)//Add xml filename
