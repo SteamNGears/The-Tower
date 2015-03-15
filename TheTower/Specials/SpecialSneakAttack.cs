@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TheTower
 {
@@ -20,12 +17,13 @@ namespace TheTower
         {
             typeList = new List<string>();
             typeList.Add("SneakAttack");
-            this.Cost = 15;
+            this.Cost = 10;
         }
         public override void Special(Tile target)
         {
             if (this.GetSpecialRange().Contains(target) && this.Cost <= this.Owner.AP)
             {
+                this.Owner.RemoveAP(this.Cost);
                 Random random = new Random();
                 int randomNumber = random.Next(0, 100);
                 Attack atk;
@@ -33,7 +31,8 @@ namespace TheTower
                     atk = new Attack(this.Owner.GetPower() * 3, this.typeList);
                 else
                     atk = new Attack(0, this.typeList);
-                this.GetAoeRange(target).ApplyDamage(atk);         
+                this.GetAoeRange(target).ApplyDamage(atk);
+                this.Owner.RemoveAP(this.Cost);
             }
         }
         public override TileComposite GetAoeRange(Tile tile)

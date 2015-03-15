@@ -45,6 +45,11 @@ namespace TheTower
             Application.Exit();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Lucas Salom \nJake Wilson \nLong Nguyen", "Credit", MessageBoxButtons.OK);
+        }
+
 
     }
 }

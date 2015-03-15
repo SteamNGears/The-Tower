@@ -1,8 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TheTower
 {
@@ -27,6 +24,7 @@ namespace TheTower
                 Attack atk = new Attack(this.Owner.GetPower()*4, this.typeList);
                 this.GetAoeRange(target).ApplyDamage(atk);
                 this.Owner.SetHealth(this.Owner.Health/2);
+                this.Owner.RemoveAP(this.Cost);
             }
         }
 

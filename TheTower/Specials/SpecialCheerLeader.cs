@@ -1,8 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TheTower
 {
@@ -26,7 +23,8 @@ namespace TheTower
                 Attack atk = new Attack(-this.Owner.GetPower(), this.typeList);
                 if(this.Owner.GetPower() > 0)
                     this.Owner.SetPower(this.Owner.GetPower()-1);
-                this.GetAoeRange(target).ApplyDamage(atk);          
+                this.GetAoeRange(target).ApplyDamage(atk);
+                this.Owner.RemoveAP(this.Cost);
             }
         }
         public override TileComposite GetAoeRange(Tile tile)

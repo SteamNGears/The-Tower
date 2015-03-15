@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace TheTower
 {
     class HeroNode
     {
-        private String heroName;
-        private String userNamed;
-        private String imagePath;
-        private String heroClass ="";
+        private string heroName;
+        private string userNamed;
+        private string imagePath;
+        private string heroClass ="";
 
-        public HeroNode(String heroName)
+        public HeroNode(string heroName)
         {
             this.heroName = heroName;
             updateImagePath();
         }
-        public String HeroClass
+        public string HeroClass
         {
             get
             {
@@ -29,7 +25,7 @@ namespace TheTower
                 this.heroClass = value;
             }
         }
-        public String UserNamed
+        public string UserNamed
         {
             get
             {
@@ -43,10 +39,10 @@ namespace TheTower
 
         public void updateImagePath()
         {
-            String path = System.IO.Directory.GetCurrentDirectory();
+            string path = System.IO.Directory.GetCurrentDirectory();
             if(heroName.Length != 0)
             {               
-                imagePath = String.Format(path + "\\bitmap\\hero{0} 50x50.png", heroName[5]);
+                imagePath = string.Format(path + "\\bitmap\\hero{0} 50x50.png", heroName[5]);
             }
             else
             {
@@ -54,7 +50,7 @@ namespace TheTower
             }           
         }
 
-        public String ImagePath
+        public string ImagePath
         {
             get
             {

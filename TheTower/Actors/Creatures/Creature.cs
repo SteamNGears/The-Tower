@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace TheTower
 {
     /* Lucas Salom
@@ -21,6 +16,17 @@ namespace TheTower
         public AIController GetController()
         {
             return this.AI;
+        }
+
+        //Determines whether or not to do Special Attack or Regular attack
+        //
+        public abstract bool CalculateSpecial();
+
+        //Returns effective range of special
+        //
+        public TileSet GetSpecialEffectiveRange()
+        {
+            return this.Special.GetEffectiveRange();
         }
     }
 }

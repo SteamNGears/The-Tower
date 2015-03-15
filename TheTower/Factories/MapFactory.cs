@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -64,12 +61,15 @@ namespace TheTower
             //create each later in the map and fill it with the actors defined in the xml using the ActorFactory
             foreach(XmlNode layer in layers)//for each layer
             {
+		curx = 0; cury = 0;
                 tiles = layer.SelectNodes("data/tile");//get all the tiles
                 foreach (XmlNode tile in tiles)//for each tile
                 {
                     //get the correct tile it belongs in and add the actor there
                     try
-                    {ret.GetTile(curx / tileWidth, cury / tileHeight).AddActor(actors[Convert.ToInt32(tile.Attributes["gid"].Value) - 1].clone());}
+                    {
+                        if (Convert.ToInt32(tile.Attributes["gid"].Value) != 0)
+                         ret.AddActorAt(curx / tileWidth, cury / tileHeight,actors[Convert.ToInt32(tile.Attributes["gid"].Value) - 1].clone());}
                     catch (NullReferenceException e)
                     { MessageBox.Show("Could add actor because " + e.ToString()); }
                     

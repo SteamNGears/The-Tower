@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace TheTower
 {
     /* Lucas Salom
@@ -15,6 +10,10 @@ namespace TheTower
         public Hero(string name,int ID,int ap, int health, int speed, int power):base(name,ID,ap,health,speed,power)
         {
             this.AddTag("Hero");
+        }
+        public override Actor clone()
+        {
+            return this;
         }
     }
 }

@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TheTower
 {
-    /**
-     * Long Nguyen
-     * Attack SubClass - WizzardStick
-     * Type - Blunt
-     * Single Target - Melee
-     */
     class AttackWizzardStick : AttackMode
     {
         public AttackWizzardStick(Pawn owner)
             : base(owner)
         {
             typeList = new List<string>();
-            typeList.Add("Blunt");
+            typeList.Add("WizzardStick");
             this.Cost = 5;
         }
         public override int ModDamage()

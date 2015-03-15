@@ -11,26 +11,6 @@ namespace TheTower
     public class HeroFactory
     {
         #region Factory Methods
-        public Pawn MakeBomb(String name)
-        {
-            Pawn bomb = new Pawn(name, 3, 7, 15, 8, 10);
-            bomb.setImage(TheTower.Properties.Resources.hero1_50x50);
-            bomb.AddTag("Bomb");
-            bomb.AddTag("Creature");
-            bomb.AddTag("Collidable");
-
-            bomb.SetAttack(new AttackBurn(bomb));
-
-            DefenseMode def = new DefenseMode(bomb);
-            def.AddAbsorb("Fire");
-            bomb.SetDefense(def);
-
-            bomb.SetMove(new MoveGround(bomb));
-
-            bomb.SetSpecial(new SpecialExplode(bomb));
-
-            return bomb;
-        }
         //Name, ID, AP, Health, Speed, Power, Attack, Move, Damage
         public Pawn MakeWarrior(string name)
         {

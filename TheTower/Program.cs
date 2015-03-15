@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace TheTower
 {
-    public class Program
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

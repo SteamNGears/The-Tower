@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using TheTower.Actors;
-
+﻿using System.Collections.Generic;
+using System;
 namespace TheTower
 {
-    public class Pawn : Actor
+    public abstract class Pawn : Actor
     {
 
         public Pawn(string name,int ID,int ap, int health, int speed, int power)
@@ -32,15 +30,11 @@ namespace TheTower
         public int Power { get; private set; }
         public bool Dead { get; private set;}
 
-        private DefenseMode Defense;
-        private AttackMode Attack;
-        private MoveMode Move;
-        private SpecialMode Special;
+        protected DefenseMode Defense;
+        protected AttackMode Attack;
+        protected MoveMode Move;
+        protected SpecialMode Special;
 
-		public override Actor clone()
-		{
-			return this;
-		}
         public void SetPower(int p)
         {
             this.Power = p;
@@ -74,6 +68,7 @@ namespace TheTower
         public void SetHealth(int hp)
         {
             this.Health = hp;
+            this.Dead = false;
             if (this.Health > this.MaxHealth)
                 this.Health = this.MaxHealth;
             else if (this.Health < 0)

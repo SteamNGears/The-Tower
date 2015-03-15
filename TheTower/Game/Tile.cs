@@ -6,7 +6,6 @@ namespace TheTower
 {
     public class Tile : TileComposite
     {
-        #region Member Variables and Ctor
         public int x;
         public int y;
         public Tile up { get; set; }
@@ -35,14 +34,11 @@ namespace TheTower
         {
             foreach (Actor a in Actors)
             {
-                if (a.GetTags().Contains(Type))
+                if (a.hasTag(Type))
                     return true;
             }
             return false;
         }
-        #endregion
-
-        #region Overriden Object Methods
         public bool Contains(Tile that)
         {
             return this.Equals(that);
@@ -60,18 +56,12 @@ namespace TheTower
             }
             catch { return false; }
         }
-        public override string ToString()
+        
+        public bool RemoveActor(Actor o)
         {
-            return this.GetData().ToString();
+            return this.Actors.Remove(o);
         }
 
-        #endregion
-
-        #region Miscellaneous Methods
-        public void RemoveActor(Actor o)
-        {
-            this.Actors.Remove(o);
-        }
         public void AddActor(Actor o)
         {
             //MessageBox.Show("Assign actor: " + o.Name);
@@ -81,32 +71,11 @@ namespace TheTower
                 o.SetTile(this);
             }
         }
-        public bool HasCollidable()
-        {
-            foreach (Actor o in Actors)
-                if (o.GetTags().Contains("Collidable"))
-                    return true;
-            return false;
-        }
 
-        public void ApplyDamage(Attack atk)
-        {
-            foreach (Actor a in Actors)
-            {
-                if (a.GetTags().Contains("Pawn"))
-                {
-                    Pawn target = (Pawn)a;
-                    target.TakeDamage(atk);
-                }
-            }
-        }
         public List<Actor> GetData()
         {
             return this.Actors;
         }
-        #endregion
-
-        #region Connection Methods
         public void ConnectDown(Tile down)
         {
             this.down = down;
@@ -153,9 +122,10 @@ namespace TheTower
             left.right = this;
         }
 
-        #endregion
-        
-        #region Range Methods
+        public override string ToString()
+        {
+            return this.GetData().ToString();
+        }
         public TileSet GetMoveRange(int range)
         {
             TileSet rangeList = new TileSet();
@@ -228,79 +198,9 @@ namespace TheTower
             }
             return rangeList;
         }
-        private void MoveRangeHelper(TileSet rangeList, double range)
-        {
-            if (range > 2)
-            {
-                if (this.upLeft != null && !this.upLeft.HasCollidable())
-                {
-                    rangeList.Add(this.upLeft);
-                    this.upLeft.MoveRangeHelper(rangeList, range - 3);
-                }
-                if (this.upRight != null && !this.upRight.HasCollidable())
-                {
-                    rangeList.Add(this.upRight);
-                    this.upRight.MoveRangeHelper(rangeList, range - 3);
-                }
-                if (this.downLeft != null && !this.downLeft.HasCollidable())
-                {
-                    rangeList.Add(this.downLeft);
-                    this.downLeft.MoveRangeHelper(rangeList, range - 3);
-                }
-                if (this.downRight != null && !this.downRight.HasCollidable())
-                {
-                    rangeList.Add(this.downRight);
-                    this.downRight.MoveRangeHelper(rangeList, range - 3);
-                }
-                if (this.up != null && !this.up.HasCollidable())
-                {
-                    rangeList.Add(this.up);
-                    this.up.MoveRangeHelper(rangeList, range - 2);
-                }
-                if (this.down != null && !this.down.HasCollidable())
-                {
-                    rangeList.Add(this.down);
-                    this.down.MoveRangeHelper(rangeList, range - 2);
-                }
-                if (this.left != null && !this.left.HasCollidable())
-                {
-                    rangeList.Add(this.left);
-                    this.left.MoveRangeHelper(rangeList, range - 2);
-                }
-                if (this.right != null && !this.right.HasCollidable())
-                {
-                    rangeList.Add(this.right);
-                    this.right.MoveRangeHelper(rangeList, range - 2);
-                }
-            }
-            else if (range == 2)
-            {
-                if (this.up != null && !this.up.HasCollidable())
-                {
-                    rangeList.Add(this.up);
-                    this.up.MoveRangeHelper(rangeList, range - 2);
-                }
-                if (this.down != null && !this.down.HasCollidable())
-                {
-                    rangeList.Add(this.down);
-                    this.down.MoveRangeHelper(rangeList, range - 2);
-                }
-                if (this.left != null && !this.left.HasCollidable())
-                {
-                    rangeList.Add(this.left);
-                    this.left.MoveRangeHelper(rangeList, range - 2);
-                }
-                if (this.right != null && !this.right.HasCollidable())
-                {
-                    rangeList.Add(this.right);
-                    this.right.MoveRangeHelper(rangeList, range - 2);
-                }
-            }
-        }
         public TileSet GetRange(int range)
         {
             TileSet rangeList = new TileSet();
-            rangeList.Add(this);
 
             if (range > 2)
             {
@@ -439,10 +339,104 @@ namespace TheTower
                 }
             }
         }
+        private void MoveRangeHelper(TileSet rangeList, double range)
+        {
+            if (range > 2)
+            {
+                if (this.upLeft != null && !this.upLeft.HasCollidable())
+                {
+                    rangeList.Add(this.upLeft);
+                    this.upLeft.MoveRangeHelper(rangeList, range - 3);
+                }
+                if (this.upRight != null && !this.upRight.HasCollidable())
+                {
+                    rangeList.Add(this.upRight);
+                    this.upRight.MoveRangeHelper(rangeList, range - 3);
+                }
+                if (this.downLeft != null && !this.downLeft.HasCollidable())
+                {
+                    rangeList.Add(this.downLeft);
+                    this.downLeft.MoveRangeHelper(rangeList, range - 3);
+                }
+                if (this.downRight != null && !this.downRight.HasCollidable())
+                {
+                    rangeList.Add(this.downRight);
+                    this.downRight.MoveRangeHelper(rangeList, range - 3);
+                }
+                if (this.up != null && !this.up.HasCollidable())
+                {
+                    rangeList.Add(this.up);
+                    this.up.MoveRangeHelper(rangeList, range - 2);
+                }
+                if (this.down != null && !this.down.HasCollidable())
+                {
+                    rangeList.Add(this.down);
+                    this.down.MoveRangeHelper(rangeList, range - 2);
+                }
+                if (this.left != null && !this.left.HasCollidable())
+                {
+                    rangeList.Add(this.left);
+                    this.left.MoveRangeHelper(rangeList, range - 2);
+                }
+                if (this.right != null && !this.right.HasCollidable())
+                {
+                    rangeList.Add(this.right);
+                    this.right.MoveRangeHelper(rangeList, range - 2);
+                }
+            }
+            else if (range == 2)
+            {
+                if (this.up != null && !this.up.HasCollidable())
+                {
+                    rangeList.Add(this.up);
+                    this.up.MoveRangeHelper(rangeList, range - 2);
+                }
+                if (this.down != null && !this.down.HasCollidable())
+                {
+                    rangeList.Add(this.down);
+                    this.down.MoveRangeHelper(rangeList, range - 2);
+                }
+                if (this.left != null && !this.left.HasCollidable())
+                {
+                    rangeList.Add(this.left);
+                    this.left.MoveRangeHelper(rangeList, range - 2);
+                }
+                if (this.right != null && !this.right.HasCollidable())
+                {
+                    rangeList.Add(this.right);
+                    this.right.MoveRangeHelper(rangeList, range - 2);
+                }
+            }
+        }
+        public bool HasCollidable()
+        {
+            foreach (Actor o in Actors)
+                if (o.hasTag("Collidable"))
+                    return true;
+            return false;
+        }
 
-        #endregion
+        public void ApplyDamage(Attack atk)
+        {
+            List<Actor> toRemove = new List<Actor>();
+            foreach(Actor a in Actors)
+            {
+                if(a.hasTag("Pawn"))
+                {
+                    Pawn target = (Pawn)a;
+                    target.TakeDamage(atk);
+                    if (target.Dead)
+                        toRemove.Add(target);
+                }
+            }
+            foreach(Actor a in toRemove)
+            {
+                this.Actors.Remove(a);
+            }
+            
+        }
 
-        #region Drawing
+
         /**
          * renders all the layers in this tile by calling draw on each actor
          * @author Jakob Wilson
@@ -450,12 +444,11 @@ namespace TheTower
          * */
         public void render(PaintEventArgs e, int x, int y)
         {
-           
+            //MessageBox.Show("Drawing tile " + x + ", " + y);
             foreach (Actor a in this.Actors)
             {
                 a.Draw(e, x, y);
             }
         }
-        #endregion
     }
 }

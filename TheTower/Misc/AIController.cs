@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TheTower
 {
@@ -10,12 +6,12 @@ namespace TheTower
     {
 
         #region Member Variables, Ctor, and Setters/Getters
-        private Pawn AIPawn;
+        private Creature AIPawn;
         private Tile Target;
         private bool isValidTarget;
         public AIController(Pawn p)
         {
-            this.AIPawn = p;
+            this.AIPawn = (Creature)p;
             this.Target = null;
             this.isValidTarget = false;
         }
@@ -23,7 +19,7 @@ namespace TheTower
         {
             this.Target = null;
             this.isValidTarget = false;
-            this.AIPawn = p;
+            this.AIPawn = (Creature)p;
         }
         #endregion
 
@@ -42,13 +38,13 @@ namespace TheTower
             if(this.Target!=null)
                 foreach (Actor a in this.Target.GetData())
                 {
-                    if ((a as Pawn).GetTags().Contains("Hero") && !(a as Pawn).Dead)
+                    if (a.hasTag("Hero") && !(a as Pawn).Dead)
                     {
                         this.isValidTarget = true;
                     }
                 }
             if(!this.isValidTarget)
-                this.SearchForTarget(20);// 20 == search range
+                this.SearchForTarget(10);
             if(!this.isValidTarget)
             {
                 this.Target = null;
@@ -56,13 +52,27 @@ namespace TheTower
             }
             else
             {
-                if (!this.AIPawn.GetAttackRange().Contains(Target))
+                if(this.AIPawn.CalculateSpecial())
                 {
-                    StepTowardsTarget();
+                    if (!this.AIPawn.GetSpecialEffectiveRange().Contains(Target))
+                    {
+                        StepTowardsTarget();
+                    }
+                    else
+                    {
+                        SpecialTarget();
+                    }
                 }
                 else
                 {
-                    AttackTarget();
+                    if (!this.AIPawn.GetAttackRange().Contains(Target))
+                    {
+                        StepTowardsTarget();
+                    }
+                    else
+                    {
+                        AttackTarget();
+                    }
                 }
             }
         }
@@ -73,14 +83,22 @@ namespace TheTower
          */
         private void AttackTarget()
         {
-            if(this.AIPawn.CanAttack())
+            if (this.AIPawn.CanAttack())
             {
                 this.AIPawn.UseAttack(this.Target);
             }
             else
-            {
                 this.AIPawn.RemoveAP(this.AIPawn.AP);
+        }
+
+        private void SpecialTarget()
+        {
+            if (this.AIPawn.CanSpecial())
+            {
+                this.AIPawn.UseSpecial(this.Target);
             }
+            else
+                this.AIPawn.RemoveAP(this.AIPawn.AP);
         }
 
         /**
@@ -193,7 +211,7 @@ namespace TheTower
             {
                 foreach (Actor a in Origin.GetData())
                 {
-                    if (!(a as Pawn).Dead)
+                    if (a.hasTag("Hero") && !(a as Pawn).Dead)
                     {
                         this.Target = Origin;
                         this.isValidTarget = true;

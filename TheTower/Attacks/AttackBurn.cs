@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TheTower
 {
-    /**
-     * Lucas Salom
-     * Attack SubClass - Burn
-     * Type - Fire
-     * Single Target - Ranged
-     */
     public class AttackBurn : AttackMode
     {
         public AttackBurn(Pawn owner) : base(owner)

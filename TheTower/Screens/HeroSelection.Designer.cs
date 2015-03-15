@@ -177,7 +177,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 250);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Warrior\r\n\r\nHealth: 25\r\nSpeed: 10\r\nPower: 10\r\nAttack: Splash\r\nSpecial: Heal";
+            this.label1.Text = "Warrior\r\n\r\nHealth: 25\r\nSpeed: 10\r\nPower: 10\r\nAttack: Slash\r\nSpecial: Heal\r\n\r\n   H" +
+    "eal herself or\r\n   other unit";
             // 
             // label2
             // 
@@ -188,7 +189,8 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 250);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Vampire\r\n\r\nHealth: 30\r\nSpeed: 11\r\nPower: 10\r\nAttack: Splash\r\nSpecial: Bite";
+            this.label2.Text = "Vampire\r\n\r\nHealth: 30\r\nSpeed: 11\r\nPower: 10\r\nAttack: Slash\r\nSpecial: Bite\r\n\r\n   V" +
+    "ampire bite, cause damage to other and gain health";
             // 
             // label3
             // 
@@ -199,7 +201,8 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(150, 250);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Miss World\r\n\r\nHealth: 10\r\nSpeed: 5\r\nPower: 15\r\nAttack: Smile\r\nSpecial: Cheer";
+            this.label3.Text = "Miss World\r\n\r\nHealth: 10\r\nSpeed: 5\r\nPower: 15\r\nAttack: Smile\r\nSpecial: Cheer\r\n\r\n " +
+    "  Health others, losing effect after long use";
             // 
             // label4
             // 
@@ -210,7 +213,8 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 250);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Wizzard\r\n\r\nHealth: 15\r\nSpeed: 10\r\nPower: 10\r\nAttack: Stick\r\nSpecial: Heal";
+            this.label4.Text = "Wizzard\r\n\r\nHealth: 15\r\nSpeed: 10\r\nPower: 10\r\nAttack: Stick\r\nSpecial: Heal\r\n   \r\n " +
+    "  Heal himself or others unit";
             // 
             // label5
             // 
@@ -221,7 +225,8 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 250);
             this.label5.TabIndex = 18;
-            this.label5.Text = "Paladin\r\n\r\nHealth: 30\r\nSpeed: 5\r\nPower: 10\r\nAttack: Splash\r\nSpecial: Heal";
+            this.label5.Text = "Paladin\r\n\r\nHealth: 30\r\nSpeed: 5\r\nPower: 10\r\nAttack: Slash\r\nSpecial: Heal \r\n \r\n   " +
+    "Heal himself or others unit";
             // 
             // label6
             // 
@@ -232,7 +237,8 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(150, 250);
             this.label6.TabIndex = 17;
-            this.label6.Text = "Ninja\r\n\r\nHealth: 15\r\nSpeed: 15\r\nPower: 8\r\nAttack: Splash\r\nSpecial: Sneak";
+            this.label6.Text = "Ninja\r\n\r\nHealth: 15\r\nSpeed: 15\r\nPower: 8\r\nAttack: Slash\r\nSpecial: Sneak\r\n  \r\n   S" +
+    "neak attack tripple damage but high chance of risk";
             // 
             // label7
             // 
@@ -243,8 +249,8 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(150, 250);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Shaolin Monk\r\n\r\nHealth: 23\r\nSpeed: 13\r\nPower: 9\r\nAttack: Splash\r\nSpecial: Sacrifi" +
-    "ce";
+            this.label7.Text = "Shaolin Monk\r\n\r\nHealth: 23\r\nSpeed: 13\r\nPower: 9\r\nAttack: Slash\r\nSpecial: Sacrific" +
+    "e\r\n   \r\n   Sacrifice half heath to do 4 times damage attack";
             // 
             // label8
             // 
@@ -255,7 +261,8 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(150, 250);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Elf\r\n\r\nHealth: 15\r\nSpeed: 8\r\nPower: 10\r\nAttack: Chop\r\nSpecial: Bow";
+            this.label8.Text = "Elf\r\n\r\nHealth: 15\r\nSpeed: 8\r\nPower: 10\r\nAttack: Chop\r\nSpecial: Bow\r\n\r\n  Super lon" +
+    "g range attack";
             // 
             // pbHero1
             // 

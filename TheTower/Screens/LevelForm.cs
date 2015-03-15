@@ -18,9 +18,11 @@ namespace TheTower
         private Pawn[] Party;
         private Grid Level;         //the level grid
         private Grid Gui;           //The gui grid(player cards)
-        private HeroFactory fact;
         private Tile selectedTile;
+        private TileSelect selectionMenu;
         private TurnManager Turns;
+        private string[] gameLevels;
+        private int CurLevel;
 
 
 
@@ -28,6 +30,8 @@ namespace TheTower
         Image highlight = Image.FromFile("bitmap/HighlightViolet.png");
         public LevelForm(Pawn[] pParty)//Add xml filename
         {
+            CurLevel = 0;
+            gameLevels= new string[]{"Level1.tmx","Level2.tmx","Level3.tmx","Level4.tmx","Level5.tmx"};
             InitializeComponent();
             //enable double buffering
             this.DoubleBuffered = true;
@@ -41,27 +45,29 @@ namespace TheTower
 
         
             //create the level using the map factory
-            this.Level = MapFactory.CreateMap("Level1.tmx");
+            this.Level = MapFactory.CreateMap(gameLevels[CurLevel]);
+            this.Level.setPosition(0, 96);
+            
             this.Gui = new Grid();
             this.Gui.SetGrid(4, 1);
             this.Gui.setTileHeight(128);
             this.Gui.setTileWidth(256);
             this.Gui.setPosition(0, 640);
 
-            this.fact = new HeroFactory();
-
             this.Turns = new TurnManager();
             foreach (Pawn a in pParty)
             {
                 this.Turns.AddPawn(a);
             }
-            Pawn bomb = fact.MakeBomb("Derpo");
-            Level.GetTile(7, 4).AddActor(bomb);
-            this.Turns.AddPawn(bomb);
+
+            foreach(Actor a in this.Level.GetActorsByType("Creature"))
+            {
+                Pawn newPawn = (Pawn)a;
+                this.Turns.AddPawn(newPawn);
+            }
             this.selectedTile = null;
 
-            if (this.Turns.NextTurn() == 1)
-                Console.WriteLine("Level over");
+            this.Turns.NextTurn();
 
             this.Gui.SetTile(pParty[0].getCard(), 0, 0);
             this.Gui.SetTile(pParty[1].getCard(), 1, 0);
@@ -70,10 +76,10 @@ namespace TheTower
 
 
             //Add actors manualy
-            Level.GetTile(2, 12).AddActor(pParty[0]);
-            Level.GetTile(7, 12).AddActor(pParty[1]);
-            Level.GetTile(12, 12).AddActor(pParty[2]);
-            Level.GetTile(14, 12).AddActor(pParty[3]);
+            Level.GetTile(2, 15).AddActor(pParty[0]);
+            Level.GetTile(7, 15).AddActor(pParty[1]);
+            Level.GetTile(12, 15).AddActor(pParty[2]);
+            Level.GetTile(14, 15).AddActor(pParty[3]);
 
             this.Refresh();
             this.ResumeLayout();
@@ -95,29 +101,115 @@ namespace TheTower
 
 
         /**
-         * 
+         * Handles clicking on the form. 
+         * On right click, it generates a menu of movement/attack options
+         * On left click, it performs the appropriate action selection for that tile
          * */
         private void LevelForm_Click(object sender, EventArgs e)
-        {
+        {   
+            
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 if (this.selectedTile != null)
+                    this.selectedTile.RemoveActor(this.selectionMenu);
+                
+                this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+                Options options = this.Turns.getOptions(this.selectedTile);
+                
+                if (options != null)
                 {
-                    Options options = this.Turns.getOptions(this.selectedTile);
-                    if (options != null)
-                        Console.WriteLine("move: " + options.canMove + " attack: " + options.canAttack + " special: " + options.canSpecial);
-                    else
-                        Console.WriteLine("no current pawn");
+                    this.selectionMenu = new TileSelect(options);
+                    this.selectedTile.AddActor(this.selectionMenu);
                 }
+                else
+                    Console.WriteLine("no current pawn");
+            }
+            else if (((MouseEventArgs)e).Button == MouseButtons.Left)
+            {
+                int sel;
+                if (this.selectionMenu != null)
+                {
+                    sel = this.selectionMenu.click((MouseEventArgs)e);
+                }
+                else
+                    sel = 0;
+                switch (sel)
+                {
+
+                    case 1: if (this.Turns.DoAttack(this.selectedTile))
+                            this.NextLevel();
+                        break;
+                    case 2: if (this.Turns.DoMove(this.selectedTile))
+                            this.NextLevel();
+                        break;
+                    case 3: if (this.Turns.DoSpecial(this.selectedTile))
+                            this.NextLevel();
+                        break;
+                }
+                if (this.selectedTile != null)
+                    this.selectedTile.RemoveActor(this.selectionMenu);
+            }
+            this.Refresh();
+        }
+
+        private void endTurn_Click(object sender, EventArgs e)
+        {
+            if (this.Turns.doNothing())
+                this.NextLevel();
+            this.Refresh();
+        }
+        private void NextLevel()
+        {
+            Console.WriteLine("Initiating next Level");
+            bool gameOver=true;
+            foreach(Pawn p in Party)
+            {
+                if(!p.Dead)
+                    gameOver=false;
+            }
+            if (!gameOver)
+            {
+                this.selectedTile = null;
+                this.Turns = new TurnManager();
+                foreach (Pawn p in Party)
+                {
+                    p.SetHealth(p.MaxHealth);
+                    p.ResetAP();
+                    this.Turns.AddPawn(p);
+                }
+                this.CurLevel++;
+                if (CurLevel == gameLevels.Length)
+                {
+                    MessageBox.Show("Final Level Finished!\nYou Win!");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    this.Level = MapFactory.CreateMap(gameLevels[CurLevel]);
+                    this.Level.setPosition(0, 96);
+                    foreach (Actor a in this.Level.GetActorsByType("Creature"))
+                    {
+                        Pawn newPawn = (Pawn)a;
+                        this.Turns.AddPawn(newPawn);
+                    }
+
+                    this.Turns.NextTurn();
+
+                    Level.GetTile(2, 15).AddActor(Party[0]);
+                    Level.GetTile(7, 15).AddActor(Party[1]);
+                    Level.GetTile(12, 15).AddActor(Party[2]);
+                    Level.GetTile(14, 15).AddActor(Party[3]);
+                }
+
             }
             else
             {
-                this.selectedTile = Level.getTileAt(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
-                Actor a = new Floor("Highlight",8);
-                a.setImage(this.highlight);
-                this.selectedTile.AddActor(a);
+                MessageBox.Show("You Lost!");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                
             }
-            this.Refresh();
         }
     }
 }

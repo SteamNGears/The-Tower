@@ -1,24 +1,13 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TheTower
 {
-    /**
-     * Long Nguyen
-     * Attack SubClass - Chop
-     * Type - Chop
-     * Single Target - Melee
-     */
     public class AttackChop : AttackMode
     {
         public AttackChop(Pawn owner) : base(owner)
         {
             typeList = new List<string>();
-            typeList.Add("Blunt");
-            typeList.Add("Slashing");
+            typeList.Add("Chop");
             this.Cost = 5;
         }
         public override int ModDamage()
