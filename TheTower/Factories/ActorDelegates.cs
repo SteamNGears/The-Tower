@@ -13,6 +13,7 @@ namespace TheTower
          * */
         public static void init()
         {
+            ActorFactory.clearAllActors();
             ActorFactory.actorMethod floorDel = ActorDelegates.createFloor;//create the actorMethod delegate
             ActorFactory.addActorMethod("Floor", floorDel); //add it to the Actor Factory
 

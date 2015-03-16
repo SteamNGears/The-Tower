@@ -258,6 +258,8 @@ namespace TheTower
             gameScreen = new LevelForm(party);
             gameScreen.Visible = false;
             this.Hide();
+
+
             if (gameScreen.ShowDialog(this) == DialogResult.OK)
             {
                 this.DialogResult = DialogResult.OK;

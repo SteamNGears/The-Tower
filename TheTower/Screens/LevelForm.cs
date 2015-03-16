@@ -25,11 +25,13 @@ namespace TheTower
         private TurnManager Turns;
         private string[] gameLevels;
         private int CurLevel;
+        private PotionTile potions;
+        private ControlWriter textWriter;
 
 
         //test
         //temporary
-        Image highlight = Image.FromFile("bitmap/HighlightViolet.png");
+        //Image highlight = Image.FromFile("bitmap/HighlightViolet.png");
         public LevelForm(Pawn[] pParty)//Add xml filename
         {
             CurLevel = 0;
@@ -57,11 +59,13 @@ namespace TheTower
             this.Overlay.setTileHeight(this.Level.getTileHeight());
             this.Overlay.setPosition(0, 96);
 
+            this.potions = new PotionTile();
+
             this.Gui = new Grid();
             this.Gui.SetGrid(4, 1);
             this.Gui.setTileHeight(128);
             this.Gui.setTileWidth(256);
-            this.Gui.setPosition(0, 640);
+            this.Gui.setPosition(0, 752);
 
             this.Turns = new TurnManager();
             foreach (Pawn a in pParty)
@@ -88,10 +92,13 @@ namespace TheTower
 
             //Add actors manualy
             Level.GetTile(2, 15).AddActor(pParty[0]);
-            Level.GetTile(7, 15).AddActor(pParty[1]);
-            Level.GetTile(12, 15).AddActor(pParty[2]);
+            Level.GetTile(6, 15).AddActor(pParty[1]);
+            Level.GetTile(10, 15).AddActor(pParty[2]);
             Level.GetTile(14, 15).AddActor(pParty[3]);
 
+            TxtBox_GameInfo.ReadOnly = true;
+            textWriter = new ControlWriter(TxtBox_GameInfo);
+            Console.SetOut(textWriter);
             this.Refresh();
             this.ResumeLayout();
             this.Show();
@@ -109,6 +116,7 @@ namespace TheTower
             this.Level.render(e);
             this.Gui.render(e);
             this.Overlay.render(e);
+            this.potions.Draw(e, 0, 64);
         }
 
 
@@ -164,6 +172,14 @@ namespace TheTower
                 }
                 if (this.selectedTile != null)
                     this.selectedTile.RemoveActor(this.selectionMenu);
+
+                int result = this.potions.click(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+                
+                //potion usage
+                if (result == PotionTile.HEALTH)
+                    potions.potions.UseHealthPotion(this.Turns.getCurrentTurn());
+                if (result == PotionTile.AP)
+                    potions.potions.UseApPotion(this.Turns.getCurrentTurn());
             }
             this.Refresh();
         }

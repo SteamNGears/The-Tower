@@ -45,7 +45,7 @@ namespace TheTower
             if (HealthPotionList.Count > 0)
             {
                 HealthPotionList.RemoveAt(0);
-                actor.ResetAP();
+                actor.SetHealth(actor.MaxHealth);
             }
         }
 
@@ -54,7 +54,7 @@ namespace TheTower
             if (ApPotionList.Count > 0)
             {
                 ApPotionList.RemoveAt(0);
-                actor.SetHealth(actor.MaxHealth);
+                actor.ResetAP();
             }
         }
     }

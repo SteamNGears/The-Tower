@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4C682A61-38A3-411C-8C3C-9B545CD2644F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TheTower</RootNamespace>
     <AssemblyName>TheTower</AssemblyName>
@@ -30,6 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -59,6 +62,7 @@
     <Compile Include="Actors\Heroes\Warrior.cs" />
     <Compile Include="Actors\Heroes\Wizzard.cs" />
     <Compile Include="Actors\PlayerCard.cs" />
+    <Compile Include="Actors\PotionTile.cs" />
     <Compile Include="Actors\Structures\Floor.cs" />
     <Compile Include="Actors\Structures\Structure.cs" />
     <Compile Include="Actors\Structures\Trap.cs" />
@@ -80,6 +84,7 @@
     <Compile Include="Misc\AIController.cs" />
     <Compile Include="Attacks\AttackSmile.cs" />
     <Compile Include="Attacks\AttackWizzardStick.cs" />
+    <Compile Include="Misc\ControlWriter.cs" />
     <Compile Include="Misc\DefenseMode.cs" />
     <Compile Include="Game\Drawable.cs" />
     <Compile Include="Misc\Options.cs" />
@@ -214,7 +219,9 @@
   <ItemGroup>
     <None Include="bin\Debug\bitmap\cooltext1937978849.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="bin\Debug\bitmap\Paper.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
