@@ -139,29 +139,35 @@ namespace TheTower
         public bool DoSpecial(Tile tile)
         {
             CurPawn.UseSpecial(tile);
-            if (!CurPawn.CanAct() || this.CleanQueue())
+            if (this.CleanQueue() || !CurPawn.CanAct())
             {
                 return this.endTurn();
             }
+            if (this.CurPawn.Dead)
+                return this.endTurn();
             return this.isFinished();
         }
         public bool DoAttack(Tile tile)
         {
             CurPawn.UseAttack(tile);
-            if (!CurPawn.CanAct() || this.CleanQueue())
+            if (this.CleanQueue() || !CurPawn.CanAct())
             {
                 return this.endTurn();
             }
+            if (this.CurPawn.Dead)
+                return this.endTurn();
             return this.isFinished();
         }
         public bool DoMove(Tile tile)
         {
             
             CurPawn.MoveTo(tile);
-            if (!CurPawn.CanAct() || this.CleanQueue())
+            if (this.CleanQueue() || !CurPawn.CanAct())
             {
                 return this.endTurn();
             }
+            if (this.CurPawn.Dead)
+                return this.endTurn();
             return this.isFinished();
         }
         public bool doNothing()
@@ -171,7 +177,6 @@ namespace TheTower
         #endregion
         private bool endTurn()
         {
-            this.CurPawn.isTurn = false;
             this.CurPawn.ResetAP();
             this.TurnQueue.Enqueue(CurPawn);
             return this.NextTurn();

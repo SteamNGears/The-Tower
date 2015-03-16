@@ -2,11 +2,11 @@
 
 namespace TheTower
 {
-    public class TrapExplode:TrapAction
+    public class TrapActExplode:TrapAction
     {
         private Trap owner;
         private List<string> types;
-        public TrapExplode(Trap owner)
+        public TrapActExplode(Trap owner)
         {
             this.owner = owner;
             this.types = new List<string>();
@@ -14,10 +14,10 @@ namespace TheTower
         }
         public void Act()
         {
-            Attack atk = new Attack(this.owner.Power,this.types);
+            Attack atk = new Attack(7,this.types);
             this.GetRange(this.owner.GetTile()).ApplyDamage(atk);
         }
-        public TileComposite GetRange(Tile tile)
+        private TileComposite GetRange(Tile tile)
         {
             return tile.GetRange(5);
         }

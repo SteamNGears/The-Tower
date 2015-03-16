@@ -84,6 +84,17 @@ namespace TheTower
             if (this.Move == null)
                 return;
             this.Move.Move(target);
+            if(this.CurTile.HasType("Trap"))
+            {
+                List<Trap> traps = new List<Trap>();
+                foreach(Actor a in this.CurTile.GetData())
+                {
+                    if (a is Trap)
+                        traps.Add((Trap)a);
+                }
+                foreach (Trap t in traps)
+                    t.Act();
+            }
         }
         public void UseAttack(Tile target)
         {
