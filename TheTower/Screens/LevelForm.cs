@@ -25,11 +25,12 @@ namespace TheTower
         private TurnManager Turns;
         private string[] gameLevels;
         private int CurLevel;
+        private PotionTile potions;
 
 
         //test
         //temporary
-        Image highlight = Image.FromFile("bitmap/HighlightViolet.png");
+        //Image highlight = Image.FromFile("bitmap/HighlightViolet.png");
         public LevelForm(Pawn[] pParty)//Add xml filename
         {
             CurLevel = 0;
@@ -56,6 +57,8 @@ namespace TheTower
             this.Overlay.setTileWidth(this.Level.getTileWidth());
             this.Overlay.setTileHeight(this.Level.getTileHeight());
             this.Overlay.setPosition(0, 96);
+
+            this.potions = new PotionTile();
 
             this.Gui = new Grid();
             this.Gui.SetGrid(4, 1);
@@ -109,6 +112,7 @@ namespace TheTower
             this.Level.render(e);
             this.Gui.render(e);
             this.Overlay.render(e);
+            this.potions.Draw(e, 0, 64);
         }
 
 
@@ -164,6 +168,14 @@ namespace TheTower
                 }
                 if (this.selectedTile != null)
                     this.selectedTile.RemoveActor(this.selectionMenu);
+
+                int result = this.potions.click(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+                
+                //potion usage
+                if (result == PotionTile.HEALTH)
+                    potions.potions.UseHealthPotion(this.Turns.getCurrentTurn());
+                if (result == PotionTile.AP)
+                    potions.potions.UseApPotion(this.Turns.getCurrentTurn());
             }
             this.Refresh();
         }
@@ -177,15 +189,6 @@ namespace TheTower
         private void NextLevel()
         {
             Console.WriteLine("Initiating next Level");
-
-
-            if (this.selectedTile != null)
-                this.selectedGuiTile.RemoveActor(this.selectionMenu);
-                
-            this.selectedGuiTile = null;
-            this.selectedTile = null;
-            this.selectionMenu = null;
-
 
             bool gameOver=true;
             foreach(Pawn p in Party)

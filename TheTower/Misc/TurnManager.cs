@@ -8,6 +8,7 @@ namespace TheTower
     {
         #region Member Variables, Ctor, and Getters/Setters
         private Pawn CurPawn;
+        private PotionBelt potions;
         private Queue<Pawn> TurnQueue;
         //private bool turnDone;
 
@@ -15,6 +16,7 @@ namespace TheTower
         {
             this.TurnQueue = new Queue<Pawn>();
             this.CurPawn = null;
+            this.potions = new PotionBelt();
            // this.turnDone = true;
         }
         public void AddPawn(Pawn p)
@@ -125,6 +127,15 @@ namespace TheTower
         #endregion
 
         #region Actions
+
+        public void UseHealthPotion()
+        {
+            this.potions.UseHealthPotion(CurPawn);
+        }
+        public void UseApPotion()
+        {
+            this.potions.UseApPotion(CurPawn);
+        }
         public bool DoSpecial(Tile tile)
         {
             CurPawn.UseSpecial(tile);
@@ -158,6 +169,15 @@ namespace TheTower
             return this.endTurn();
         }
         #endregion
+       
+        /**
+         * Gets the actor whose turn it is. 
+         * */
+        public Pawn getCurrentTurn()
+        {
+            return this.CurPawn;
+        }
+        
         private bool endTurn()
         {
             this.CurPawn.isTurn = false;

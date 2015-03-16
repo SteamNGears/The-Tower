@@ -59,6 +59,7 @@
     <Compile Include="Actors\Heroes\Warrior.cs" />
     <Compile Include="Actors\Heroes\Wizzard.cs" />
     <Compile Include="Actors\PlayerCard.cs" />
+    <Compile Include="Actors\PotionTile.cs" />
     <Compile Include="Actors\Structures\Floor.cs" />
     <Compile Include="Actors\Structures\Structure.cs" />
     <Compile Include="Actors\Structures\Switch.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Misc\Options.cs" />
     <Compile Include="Actors\GoldHighlight.cs" />
     <Compile Include="Misc\HeroNode.cs" />
+    <Compile Include="Misc\PotionBelt.cs" />
     <Compile Include="Screens\HeroSelection.cs">
       <SubType>Form</SubType>
     </Compile>
