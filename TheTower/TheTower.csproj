@@ -62,11 +62,12 @@
     <Compile Include="Actors\PotionTile.cs" />
     <Compile Include="Actors\Structures\Floor.cs" />
     <Compile Include="Actors\Structures\Structure.cs" />
-    <Compile Include="Actors\Structures\Switch.cs" />
     <Compile Include="Actors\Structures\Trap.cs" />
     <Compile Include="Actors\Structures\TrapActions\TrapAction.cs" />
-    <Compile Include="Actors\Structures\TrapActions\TrapExplode.cs" />
+    <Compile Include="Actors\Structures\TrapActions\TrapActExplode.cs" />
+    <Compile Include="Actors\Structures\TrapActions\TrapActSpike.cs" />
     <Compile Include="Actors\Structures\TrapExplosive.cs" />
+    <Compile Include="Actors\Structures\TrapSpike.cs" />
     <Compile Include="Actors\Structures\Wall.cs" />
     <Compile Include="Actors\TileSelect.cs" />
     <Compile Include="Factories\ActorDelegates.cs" />

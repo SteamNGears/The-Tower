@@ -19,11 +19,14 @@ namespace TheTower
             ActorFactory.actorMethod wallDel = ActorDelegates.createWall;
             ActorFactory.addActorMethod("Wall", wallDel);
 
+            ActorFactory.actorMethod TrapExplosiveDel = ActorDelegates.createTrapExplosive;
+            ActorFactory.addActorMethod("TrapExplosive", TrapExplosiveDel);
+
+            ActorFactory.actorMethod TrapSpikeDel = ActorDelegates.createTrapSpike;
+            ActorFactory.addActorMethod("TrapSpike", TrapSpikeDel);
+
             ActorFactory.actorMethod wraithDel = ActorDelegates.createWraith;
             ActorFactory.addActorMethod("Wraith", wraithDel);
-
-            //ActorFactory.actorMethod hydraDel = ActorDelegates.createHydra;
-            //ActorFactory.addActorMethod("Hydra", hydraDel);
 
             ActorFactory.actorMethod skeleDel = ActorDelegates.createSkeleton;
             ActorFactory.addActorMethod("Skeleton", skeleDel);
@@ -43,6 +46,14 @@ namespace TheTower
          * @see ActorFactory.actorMethod
          * @author Jakob Wilson
          * */
+        public static Actor createTrapExplosive(XmlNode data)
+        {
+            return new TrapExplosive("Explosive Trap", 11, Image.FromFile(data.SelectSingleNode("image").Attributes["source"].Value));
+        }
+        public static Actor createTrapSpike(XmlNode data)
+        {
+            return new TrapSpike("Spike Trap", 11, Image.FromFile(data.SelectSingleNode("image").Attributes["source"].Value));
+        }
         public static Actor createFloor(XmlNode data)
         {
             Actor ret = new Floor("Floor",1);

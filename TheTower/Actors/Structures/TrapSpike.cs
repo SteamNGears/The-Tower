@@ -7,21 +7,22 @@ namespace TheTower
 {
     /**
      * Lucas Salom
-     * Trap Subclass - Explosive
+     * Trap Subclass - Spike
      * No Collision
-     * Explodes upon being touched
+     * Shanks Pawn upon being touched
      */
-    public class TrapExplosive : Trap
+    public class TrapSpike: Trap
     {
-        public TrapExplosive(string name, int id, Image img)
+        public TrapSpike(string name, int id, Image img)
             : base(name, id)
         {
             this.setImage(img);
-            this.Action = new TrapActExplode(this);
+            this.Action = new TrapActSpike(this);
         }
+
         public override Actor clone()
         {
-            return new TrapExplosive(this.Name, this.ID,this.Img);
+            return new TrapSpike(this.Name,this.ID,this.Img);
         }
     }
 }
