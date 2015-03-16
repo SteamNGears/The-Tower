@@ -100,7 +100,7 @@
     <Compile Include="Screens\LevelForm.Designer.cs">
       <DependentUpon>LevelForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Factories\MapFactory.cs" />
+    <Compile Include="Factories\MapBuilder.cs" />
     <Compile Include="Movement\MoveThrough.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
