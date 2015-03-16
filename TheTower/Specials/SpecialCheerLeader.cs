@@ -35,5 +35,10 @@ namespace TheTower
         {
             return this.Owner.GetTile().GetRange(4);
         }
+
+        public override string ToString()
+        {
+            return "Cheer Leader";
+        }
     }
 }

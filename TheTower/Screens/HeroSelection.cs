@@ -260,7 +260,7 @@ namespace TheTower
             this.Hide();
             if (gameScreen.ShowDialog(this) == DialogResult.OK)
             {
-                this.DialogResult = DialogResult.Cancel;
+                this.DialogResult = DialogResult.OK;
             }
         }
     }

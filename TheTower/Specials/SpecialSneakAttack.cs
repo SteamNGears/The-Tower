@@ -43,5 +43,10 @@ namespace TheTower
         {
             return this.Owner.GetTile().GetRange(3);
         }
+
+        public override string ToString()
+        {
+            return "Sneak Attack";
+        }
     }
 }

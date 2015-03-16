@@ -21,6 +21,7 @@ namespace TheTower
             this.Attack = null;
             this.MaxAP = this.AP;
             this.AddTag("Pawn");
+            this.isTurn = false;
         }
         public int AP { get; private set; }
         public int MaxAP { get; private set; }
@@ -29,6 +30,7 @@ namespace TheTower
 	    public int Speed{ get; private set; }
         public int Power { get; private set; }
         public bool Dead { get; private set;}
+        public bool isTurn;
 
         protected DefenseMode Defense;
         protected AttackMode Attack;
@@ -169,6 +171,19 @@ namespace TheTower
         public Actor getCard()
         {
             return new PlayerCard(this);
+        }
+
+        public override string ToString()
+        {
+            String ret = "";
+            ret += ("Name: " + this.Name + "\n");
+            ret += ("Health: " + this.Health + "/" + this.MaxHealth + "\n");
+            ret += ("Action Points: " + this.AP + "/" + this.MaxAP + "\n");
+            ret += ("Power: " + this.Power + "\n");
+            ret += ("Speed: " + this.Speed + "\n");
+            ret += ("Special: " + this.Special.ToString() + "\n");
+            return ret;
+
         }
 
     }

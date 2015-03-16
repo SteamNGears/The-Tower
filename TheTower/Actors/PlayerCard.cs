@@ -1,4 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TheTower
@@ -12,6 +17,8 @@ namespace TheTower
         private Pawn _source;
         private Image _actorImg;
         private Image _background;
+        private Image _dead;
+        private Image _curTurn;
 
 
         public PlayerCard(Pawn p)
@@ -19,7 +26,9 @@ namespace TheTower
         {
             this._source = p;
             this._actorImg = p.getImage();
+            this._dead = Image.FromFile("bitmap/GUI/Skull.png");
             this._background = Image.FromFile("bitmap/CardBackGround.jpg");
+            this._curTurn = Image.FromFile("bitmap/CurrentTurn.png");
         }
 
         public override Actor clone()
@@ -34,8 +43,11 @@ namespace TheTower
         {
             if (this._background != null)
                 e.Graphics.DrawImage(this._background, x, y, this._background.Width, this._background.Height);
-            if (this._actorImg != null)
+            if (this._source.Health > 0 && this._actorImg != null)
                 e.Graphics.DrawImage(this._actorImg, x, y, this._actorImg.Width, this._actorImg.Height);
+            else if (this._source.Health <= 0)
+                e.Graphics.DrawImage(this._dead, x, y, this._dead.Width, this._dead.Height);
+
 
             //setup
             System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 12);
@@ -44,11 +56,14 @@ namespace TheTower
                 
             //info
            // e.Graphics.DrawImage(this._source.getImage(),x, y);
-            e.Graphics.DrawString("Name: " + this._source.Name, drawFont, drawBrush, x + 64, y + 4, drawFormat);
-            e.Graphics.DrawString("Health: " + this._source.Health + "/" + this._source.MaxHealth, drawFont, drawBrush, x + 64, y + 18, drawFormat);
-            e.Graphics.DrawString("Action Points: " + this._source.AP + "/" + this._source.MaxAP, drawFont, drawBrush, x + 64, y + 32, drawFormat);
-            
-            
+            e.Graphics.DrawString(this._source.ToString(), drawFont, drawBrush, x + 64, y + 4, drawFormat);
+
+            if (this._source.isTurn)
+            {
+                e.Graphics.DrawImage(this._curTurn, x, y, this._curTurn.Width, this._curTurn.Height);
+            }
+
+
                 //cleanup
             drawFont.Dispose();
 

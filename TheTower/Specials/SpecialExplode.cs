@@ -29,5 +29,10 @@ namespace TheTower
         {
             return this.Owner.GetTile();
         }
+
+        public override string ToString()
+        {
+            return "Explode";
+        }
     }
 }

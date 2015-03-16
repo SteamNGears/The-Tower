@@ -132,42 +132,42 @@ namespace TheTower
 
             if (range > 2)
             {
-                if (this.upLeft != null && !this.upLeft.HasCollidable())
+                if (this.upLeft != null && !this.upLeft.HasType("Collidable"))
                 {
                     rangeList.Add(this.upLeft);
                     this.upLeft.MoveRangeHelper(rangeList, range - 3);
                 }
-                if (this.upRight != null && !this.upRight.HasCollidable())
+                if (this.upRight != null && !this.upRight.HasType("Collidable"))
                 {
                     rangeList.Add(this.upRight);
                     this.upRight.MoveRangeHelper(rangeList, range - 3);
                 }
-                if (this.downLeft != null && !this.downLeft.HasCollidable())
+                if (this.downLeft != null && !this.downLeft.HasType("Collidable"))
                 {
                     rangeList.Add(this.downLeft);
                     this.downLeft.MoveRangeHelper(rangeList, range - 3);
                 }
-                if (this.downRight != null && !this.downRight.HasCollidable())
+                if (this.downRight != null && !this.downRight.HasType("Collidable"))
                 {
                     rangeList.Add(this.downRight);
                     this.downRight.MoveRangeHelper(rangeList, range - 3);
                 }
-                if (this.up != null && !this.up.HasCollidable())
+                if (this.up != null && !this.up.HasType("Collidable"))
                 {
                     rangeList.Add(this.up);
                     this.up.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.down != null && !this.down.HasCollidable())
+                if (this.down != null && !this.down.HasType("Collidable"))
                 {
                     rangeList.Add(this.down);
                     this.down.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.left != null && !this.left.HasCollidable())
+                if (this.left != null && !this.left.HasType("Collidable"))
                 {
                     rangeList.Add(this.left);
                     this.left.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.right != null && !this.right.HasCollidable())
+                if (this.right != null && !this.right.HasType("Collidable"))
                 {
                     rangeList.Add(this.right);
                     this.right.MoveRangeHelper(rangeList, range - 2);
@@ -175,22 +175,22 @@ namespace TheTower
             }
             else if(range==2)
             {
-                if (this.up != null && !this.up.HasCollidable())
+                if (this.up != null && !this.up.HasType("Collidable"))
                 {
                     rangeList.Add(this.up);
                     this.up.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.down != null && !this.down.HasCollidable())
+                if (this.down != null && !this.down.HasType("Collidable"))
                 {
                     rangeList.Add(this.down);
                     this.down.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.left != null && !this.left.HasCollidable())
+                if (this.left != null && !this.left.HasType("Collidable"))
                 {
                     rangeList.Add(this.left);
                     this.left.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.right != null && !this.right.HasCollidable())
+                if (this.right != null && !this.right.HasType("Collidable"))
                 {
                     rangeList.Add(this.right);
                     this.right.MoveRangeHelper(rangeList, range - 2);
@@ -343,42 +343,42 @@ namespace TheTower
         {
             if (range > 2)
             {
-                if (this.upLeft != null && !this.upLeft.HasCollidable())
+                if (this.upLeft != null && !this.upLeft.HasType("Collidable"))
                 {
                     rangeList.Add(this.upLeft);
                     this.upLeft.MoveRangeHelper(rangeList, range - 3);
                 }
-                if (this.upRight != null && !this.upRight.HasCollidable())
+                if (this.upRight != null && !this.upRight.HasType("Collidable"))
                 {
                     rangeList.Add(this.upRight);
                     this.upRight.MoveRangeHelper(rangeList, range - 3);
                 }
-                if (this.downLeft != null && !this.downLeft.HasCollidable())
+                if (this.downLeft != null && !this.downLeft.HasType("Collidable"))
                 {
                     rangeList.Add(this.downLeft);
                     this.downLeft.MoveRangeHelper(rangeList, range - 3);
                 }
-                if (this.downRight != null && !this.downRight.HasCollidable())
+                if (this.downRight != null && !this.downRight.HasType("Collidable"))
                 {
                     rangeList.Add(this.downRight);
                     this.downRight.MoveRangeHelper(rangeList, range - 3);
                 }
-                if (this.up != null && !this.up.HasCollidable())
+                if (this.up != null && !this.up.HasType("Collidable"))
                 {
                     rangeList.Add(this.up);
                     this.up.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.down != null && !this.down.HasCollidable())
+                if (this.down != null && !this.down.HasType("Collidable"))
                 {
                     rangeList.Add(this.down);
                     this.down.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.left != null && !this.left.HasCollidable())
+                if (this.left != null && !this.left.HasType("Collidable"))
                 {
                     rangeList.Add(this.left);
                     this.left.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.right != null && !this.right.HasCollidable())
+                if (this.right != null && !this.right.HasType("Collidable"))
                 {
                     rangeList.Add(this.right);
                     this.right.MoveRangeHelper(rangeList, range - 2);
@@ -386,34 +386,27 @@ namespace TheTower
             }
             else if (range == 2)
             {
-                if (this.up != null && !this.up.HasCollidable())
+                if (this.up != null && !this.up.HasType("Collidable"))
                 {
                     rangeList.Add(this.up);
                     this.up.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.down != null && !this.down.HasCollidable())
+                if (this.down != null && !this.down.HasType("Collidable"))
                 {
                     rangeList.Add(this.down);
                     this.down.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.left != null && !this.left.HasCollidable())
+                if (this.left != null && !this.left.HasType("Collidable"))
                 {
                     rangeList.Add(this.left);
                     this.left.MoveRangeHelper(rangeList, range - 2);
                 }
-                if (this.right != null && !this.right.HasCollidable())
+                if (this.right != null && !this.right.HasType("Collidable"))
                 {
                     rangeList.Add(this.right);
                     this.right.MoveRangeHelper(rangeList, range - 2);
                 }
             }
-        }
-        public bool HasCollidable()
-        {
-            foreach (Actor o in Actors)
-                if (o.hasTag("Collidable"))
-                    return true;
-            return false;
         }
 
         public void ApplyDamage(Attack atk)

@@ -84,6 +84,7 @@
     <Compile Include="Misc\Options.cs" />
     <Compile Include="Actors\GoldHighlight.cs" />
     <Compile Include="Misc\HeroNode.cs" />
+    <Compile Include="Misc\PotionBelt.cs" />
     <Compile Include="Screens\HeroSelection.cs">
       <SubType>Form</SubType>
     </Compile>

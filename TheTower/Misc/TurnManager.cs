@@ -8,6 +8,7 @@ namespace TheTower
     {
         #region Member Variables, Ctor, and Getters/Setters
         private Pawn CurPawn;
+        private PotionBelt potions;
         private Queue<Pawn> TurnQueue;
         //private bool turnDone;
 
@@ -15,6 +16,7 @@ namespace TheTower
         {
             this.TurnQueue = new Queue<Pawn>();
             this.CurPawn = null;
+            this.potions = new PotionBelt();
            // this.turnDone = true;
         }
         public void AddPawn(Pawn p)
@@ -97,6 +99,8 @@ namespace TheTower
             if(this.TurnQueue.Count>0)
             {
                 this.CurPawn = TurnQueue.Dequeue();
+                if (this.CurPawn != null)
+                    this.CurPawn.isTurn = true;
                 while(CurPawn.hasTag("Creature"))
                 {
                     Creature AIPawn = (Creature)this.CurPawn;
@@ -113,7 +117,9 @@ namespace TheTower
                     {
                         return true;
                     }
+                    this.CurPawn.isTurn = false;
                     this.CurPawn = TurnQueue.Dequeue();
+                    this.CurPawn.isTurn = true;
                 }
             }
             return false;
@@ -121,6 +127,15 @@ namespace TheTower
         #endregion
 
         #region Actions
+
+        public void UseHealthPotion()
+        {
+            this.potions.UseHealthPotion(CurPawn);
+        }
+        public void UseApPotion()
+        {
+            this.potions.UseApPotion(CurPawn);
+        }
         public bool DoSpecial(Tile tile)
         {
             CurPawn.UseSpecial(tile);
@@ -156,7 +171,7 @@ namespace TheTower
         #endregion
         private bool endTurn()
         {
-
+            this.CurPawn.isTurn = false;
             this.CurPawn.ResetAP();
             this.TurnQueue.Enqueue(CurPawn);
             return this.NextTurn();
