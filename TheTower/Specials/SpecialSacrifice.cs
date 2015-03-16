@@ -39,7 +39,7 @@ namespace TheTower
 
         public override string ToString()
         {
-            return "Special Sacrifice";
+            return "Sacrifice";
         }
     }
 }
