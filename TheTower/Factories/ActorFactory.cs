@@ -47,6 +47,14 @@ namespace TheTower
         {
             actorMethods.Add(name, a);
         }
+
+        /**
+         * removes allactors from the factory(used when game over and restarting)
+         * */
+        public static void clearAllActors()
+        {
+            actorMethods.Clear();
+        }
         
     }
 }
