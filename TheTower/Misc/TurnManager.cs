@@ -97,6 +97,8 @@ namespace TheTower
             if(this.TurnQueue.Count>0)
             {
                 this.CurPawn = TurnQueue.Dequeue();
+                if (this.CurPawn != null)
+                    this.CurPawn.isTurn = true;
                 while(CurPawn.hasTag("Creature"))
                 {
                     Creature AIPawn = (Creature)this.CurPawn;
@@ -113,7 +115,9 @@ namespace TheTower
                     {
                         return true;
                     }
+                    this.CurPawn.isTurn = false;
                     this.CurPawn = TurnQueue.Dequeue();
+                    this.CurPawn.isTurn = true;
                 }
             }
             return false;
@@ -156,7 +160,7 @@ namespace TheTower
         #endregion
         private bool endTurn()
         {
-
+            this.CurPawn.isTurn = false;
             this.CurPawn.ResetAP();
             this.TurnQueue.Enqueue(CurPawn);
             return this.NextTurn();

@@ -173,5 +173,18 @@ namespace TheTower
             return new PlayerCard(this);
         }
 
+        public override string ToString()
+        {
+            String ret = "";
+            ret += ("Name: " + this.Name + "\n");
+            ret += ("Health: " + this.Health + "/" + this.MaxHealth + "\n");
+            ret += ("Action Points: " + this.AP + "/" + this.MaxAP + "\n");
+            ret += ("Power: " + this.Power + "\n");
+            ret += ("Speed: " + this.Speed + "\n");
+            ret += ("Special: " + this.Special.ToString() + "\n");
+            return ret;
+
+        }
+
     }
 }
