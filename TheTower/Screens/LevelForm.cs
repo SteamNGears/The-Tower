@@ -178,6 +178,15 @@ namespace TheTower
         {
             Console.WriteLine("Initiating next Level");
 
+
+            if (this.selectedTile != null)
+                this.selectedGuiTile.RemoveActor(this.selectionMenu);
+                
+            this.selectedGuiTile = null;
+            this.selectedTile = null;
+            this.selectionMenu = null;
+
+
             bool gameOver=true;
             foreach(Pawn p in Party)
             {
