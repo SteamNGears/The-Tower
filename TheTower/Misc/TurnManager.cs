@@ -186,6 +186,7 @@ namespace TheTower
         
         private bool endTurn()
         {
+            this.CurPawn.isTurn = false;
             this.CurPawn.ResetAP();
             this.TurnQueue.Enqueue(CurPawn);
             return this.NextTurn();
