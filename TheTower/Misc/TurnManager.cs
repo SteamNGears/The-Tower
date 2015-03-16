@@ -169,6 +169,15 @@ namespace TheTower
             return this.endTurn();
         }
         #endregion
+       
+        /**
+         * Gets the actor whose turn it is. 
+         * */
+        public Pawn getCurrentTurn()
+        {
+            return this.CurPawn;
+        }
+        
         private bool endTurn()
         {
             this.CurPawn.isTurn = false;

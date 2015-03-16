@@ -59,6 +59,7 @@
     <Compile Include="Actors\Heroes\Warrior.cs" />
     <Compile Include="Actors\Heroes\Wizzard.cs" />
     <Compile Include="Actors\PlayerCard.cs" />
+    <Compile Include="Actors\PotionTile.cs" />
     <Compile Include="Actors\Structures\Floor.cs" />
     <Compile Include="Actors\Structures\Structure.cs" />
     <Compile Include="Actors\Structures\Switch.cs" />
